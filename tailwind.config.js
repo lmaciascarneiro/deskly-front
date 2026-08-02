@@ -7,12 +7,23 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['"Instrument Serif"', "serif"],
+        sans: ['"Instrument Sans"', "sans-serif"],
+        mono: ['"Space Mono"', "monospace"],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        ink: "#1B2420",
+        paper: "#EAEFE9",
+        brass: { DEFAULT: "#C97F3D", foreground: "#1B2420" },
+        moss: { DEFAULT: "#3F6C4B", foreground: "#EAEFE9" },
+        rust: { DEFAULT: "#B4472D", foreground: "#EAEFE9" },
+        sage: "#5C6660",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
