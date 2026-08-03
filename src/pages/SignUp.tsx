@@ -7,11 +7,10 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { EmailPasswordLoginForm } from '@/components/EmailPasswordLoginForm';
-import { GoogleSignInButton } from '@/components/GoogleSignInButton';
+import { EmailPasswordSignUpForm } from '@/components/EmailPasswordSignUpForm';
 import { useAuth } from '@/context/AuthContext';
 
-export const Login = () => {
+export const SignUp = () => {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
@@ -26,32 +25,17 @@ export const Login = () => {
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle className="font-display text-3xl italic">
-            Entrar
+            Criar conta
           </CardTitle>
-          <CardDescription>Acesse sua conta Deskly.</CardDescription>
+          <CardDescription>Crie sua conta Deskly.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          <EmailPasswordLoginForm />
-
-          <div className="flex items-center gap-3">
-            <div className="h-px flex-1 bg-border" />
-            <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-              ou
-            </span>
-            <div className="h-px flex-1 bg-border" />
-          </div>
-
-          <div className="flex justify-center">
-            <GoogleSignInButton />
-          </div>
+          <EmailPasswordSignUpForm />
 
           <p className="text-center text-sm text-muted-foreground">
-            Não tem conta?{' '}
-            <Link
-              to="/signup"
-              className="font-medium text-foreground underline"
-            >
-              Criar conta
+            Já tem conta?{' '}
+            <Link to="/login" className="font-medium text-foreground underline">
+              Entrar
             </Link>
           </p>
         </CardContent>

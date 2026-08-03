@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 import {
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut as firebaseSignOut,
@@ -15,6 +16,7 @@ interface AuthContextValue {
   isAuthenticated: boolean;
   signInWithGoogle: () => Promise<void>;
   signInWithEmail: (email: string, password: string) => Promise<void>;
+  signUpWithEmail: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
 }
 
@@ -59,6 +61,23 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const signUpWithEmail = async (email: string, password: string) => {
+    setIsLoading(true);
+    try {
+      const credential = await createUserWithEmailAndPassword(
+        firebaseAuth,
+        email,
+        password
+      );
+      const idToken = await credential.user.getIdToken();
+      const session = await authService.authenticate(idToken);
+      tokenStorage.save(session);
+      setUser(session.user);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const signOut = async () => {
     await firebaseSignOut(firebaseAuth);
     tokenStorage.clear();
@@ -73,6 +92,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         isAuthenticated: user !== null,
         signInWithGoogle,
         signInWithEmail,
+        signUpWithEmail,
         signOut,
       }}
     >
