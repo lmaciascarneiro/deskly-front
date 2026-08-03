@@ -145,7 +145,7 @@ export const Home = () => {
               <p className="mt-3 text-sm text-ink/70">{doorMessage}</p>
               {lastChecked ? (
                 <p className="mt-4 font-mono text-[11px] text-ink/40">
-                  última verificação{' '}
+                  ultimo status{' '}
                   {new Date(lastChecked).toLocaleTimeString('pt-BR')}
                 </p>
               ) : null}
