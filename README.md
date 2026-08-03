@@ -20,22 +20,28 @@ Frontend application for Deskly built with React 19, TypeScript and modern best 
 ```
 src/
   api/
-    api.ts              # Axios instance configuration
+    api.ts                  # Axios instance configuration
   components/
-    ui/                 # shadcn/ui components
-  hooks/
-    useHealth.ts        # Custom hook for health check
+    ui/                     # shadcn/ui components
+  context/
+    AuthContext.tsx         # Auth state and Firebase/backend session flow
+  firebase/
+    firebase.ts             # Firebase app initialization
   lib/
-    utils.ts            # Utility functions
+    utils.ts                # Utility functions
+    token-storage.ts        # Session persistence (localStorage)
   pages/
-    Home.tsx            # Home page component
+    Home.tsx                # Landing page
+    Login.tsx               # Email/password + Google sign-in
+    SignUp.tsx               # Account creation
+    Dashboard.tsx            # Authenticated user panel
   services/
-    health.service.ts   # Health API service
+    auth.service.ts         # Auth API service
   types/
-    health.ts           # TypeScript interfaces
-  App.tsx               # Main application component
-  main.tsx              # Application entry point
-  index.css             # Global styles
+    auth.ts                 # TypeScript interfaces
+  App.tsx                   # Main application component
+  main.tsx                  # Application entry point
+  index.css                 # Global styles
 ```
 
 ## Getting Started
@@ -82,9 +88,11 @@ The application follows a clean architecture pattern:
 - **Component Layer**: Presentational components with minimal logic
 - **Type Layer**: TypeScript interfaces for type safety
 
-This architecture allows easy addition of:
-- Authentication
+Implemented so far:
+- Authentication (email/password and Google, via Firebase)
 - Dashboard
+
+This architecture allows easy addition of:
 - User management
 - Organizations
 - Payments
