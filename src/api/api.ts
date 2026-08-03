@@ -2,7 +2,7 @@ import axios from 'axios';
 import { tokenStorage } from '@/lib/token-storage';
 
 export const api = axios.create({
-  baseURL: 'https://deskly-back-api-deskly.xqmbls.easypanel.host',
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   timeout: 10000,
 });
 

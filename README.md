@@ -92,7 +92,11 @@ This architecture allows easy addition of:
 
 ## API Configuration
 
-Base URL: `https://deskly-back-api-deskly.xqmbls.easypanel.host`
+The API base URL comes from the `VITE_API_BASE_URL` environment variable, set per Vite mode:
+
+- `.env.development` → `http://localhost:8080` (used by `npm run dev`)
+- `.env.production` → `https://deskly-back-api-deskly.xqmbls.easypanel.host` (used by `npm run build`)
+
 Timeout: `10000ms`
 
 ## Deployment
