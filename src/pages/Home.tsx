@@ -1,5 +1,8 @@
+import { Link } from 'react-router-dom';
 import { useHealth } from '@/hooks/useHealth';
 import { Button } from '@/components/ui/button';
+import { GoogleSignInButton } from '@/components/GoogleSignInButton';
+import { useAuth } from '@/context/AuthContext';
 import { RefreshCw, MapPin, Clock, DoorOpen } from 'lucide-react';
 
 const VALUE_PROPS = [
@@ -21,6 +24,7 @@ const VALUE_PROPS = [
 ];
 
 export const Home = () => {
+  const { isAuthenticated } = useAuth();
   const {
     data,
     isLoading,
@@ -54,11 +58,19 @@ export const Home = () => {
         <span className="font-display text-2xl italic tracking-tight">
           Deskly
         </span>
-        <div className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-          <span
-            className={`h-1.5 w-1.5 rounded-full ${dotColor} ${!isDown ? 'animate-pulse' : ''}`}
-          />
-          API {statusLabel}
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+            <span
+              className={`h-1.5 w-1.5 rounded-full ${dotColor} ${!isDown ? 'animate-pulse' : ''}`}
+            />
+            API {statusLabel}
+          </div>
+          {!isAuthenticated ? (
+            <Button variant="ghost" size="sm" asChild>
+              <Link to="/login">Entrar</Link>
+            </Button>
+          ) : null}
+          <GoogleSignInButton />
         </div>
       </header>
 
