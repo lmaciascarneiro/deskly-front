@@ -1,6 +1,6 @@
 # Deskly Frontend
 
-Frontend application for Deskly built with React 19, TypeScript, and modern best practices.
+Frontend application for Deskly built with React 19, TypeScript and modern best practices.
 
 ## Tech Stack
 
