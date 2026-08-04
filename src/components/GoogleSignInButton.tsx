@@ -1,4 +1,7 @@
-import { LogOut, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FirebaseError } from 'firebase/app';
+import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/context/AuthContext';
 
@@ -24,36 +27,43 @@ const GoogleIcon = () => (
 );
 
 export const GoogleSignInButton = () => {
-  const { user, isLoading, isAuthenticated, signInWithGoogle, signOut } =
-    useAuth();
+  const { signInWithGoogle, isLoading } = useAuth();
+  const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
 
-  if (isAuthenticated && user) {
-    return (
-      <div className="flex items-center gap-3">
-        <span className="max-w-[10rem] truncate text-sm text-muted-foreground">
-          {user.name ?? user.email}
-        </span>
-        <Button variant="outline" size="sm" onClick={() => signOut()}>
-          <LogOut className="h-3.5 w-3.5" />
-          Sair
-        </Button>
-      </div>
-    );
-  }
+  const handleClick = async () => {
+    setError(null);
+    try {
+      const { isNewAccount } = await signInWithGoogle();
+      navigate(isNewAccount ? '/perfil/completar' : '/workspaces', {
+        replace: true,
+      });
+    } catch (err) {
+      const isPopupClosed =
+        err instanceof FirebaseError && err.code === 'auth/popup-closed-by-user';
+      if (!isPopupClosed) {
+        setError('Não foi possível entrar com o Google. Tente novamente.');
+      }
+    }
+  };
 
   return (
-    <Button
-      variant="outline"
-      size="sm"
-      onClick={() => signInWithGoogle()}
-      disabled={isLoading}
-    >
-      {isLoading ? (
-        <Loader2 className="h-3.5 w-3.5 animate-spin" />
-      ) : (
-        <GoogleIcon />
-      )}
-      Entrar com Google
-    </Button>
+    <div className="space-y-2">
+      <Button
+        type="button"
+        variant="outline"
+        className="w-full rounded-2xl"
+        onClick={handleClick}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+        ) : (
+          <GoogleIcon />
+        )}
+        Continuar com Google
+      </Button>
+      {error ? <p className="text-sm text-destructive">{error}</p> : null}
+    </div>
   );
 };

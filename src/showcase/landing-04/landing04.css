@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap');
+
+.l04 {
+  --l04-bg: #fafaf8;
+  --l04-ink: #1d1d1f;
+  --l04-muted: #86868b;
+  --l04-line: #e5e5e1;
+  --l04-blue: #0071e3;
+  font-family: 'Work Sans', ui-sans-serif, system-ui, sans-serif;
+  background: var(--l04-bg);
+  color: var(--l04-ink);
+  font-weight: 300;
+}
+
+.l04 .l04-serif {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+}
+
+.l04-field-1 {
+  background: linear-gradient(160deg, #eee7dd, #d9d2c5);
+}
+.l04-field-2 {
+  background: linear-gradient(160deg, #dde5e4, #c3d1cf);
+}
+.l04-field-3 {
+  background: linear-gradient(160deg, #e6e1ec, #cfc6de);
+}
+
+.l04-fade {
+  animation: l04-fade 1s ease both;
+}
+@keyframes l04-fade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .l04-fade {
+    animation: none !important;
+  }
+}

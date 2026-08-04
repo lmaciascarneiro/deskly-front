@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+.l01 {
+  --l01-bg: #0a0a0b;
+  --l01-bg-elev: #111113;
+  --l01-border: #1f1f23;
+  --l01-border-strong: #313138;
+  --l01-fg: #f4f4f5;
+  --l01-muted: #8b8d98;
+  --l01-indigo: #6366f1;
+  --l01-violet: #a855f7;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background: var(--l01-bg);
+  color: var(--l01-fg);
+}
+
+.l01 .l01-mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.l01 .l01-gradient-text {
+  background: linear-gradient(90deg, var(--l01-indigo), var(--l01-violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.l01-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  background: radial-gradient(circle, var(--l01-indigo), transparent 70%);
+  animation: l01-drift 12s ease-in-out infinite alternate;
+}
+
+@keyframes l01-drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(20px, -20px) scale(1.08);
+  }
+}
+
+.l01-fade-up {
+  animation: l01-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes l01-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .l01-orb,
+  .l01-fade-up {
+    animation: none !important;
+  }
+}

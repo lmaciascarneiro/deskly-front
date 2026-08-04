@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+.l03 {
+  --l03-rausch: #ff385c;
+  --l03-teal: #00a699;
+  --l03-ink: #222222;
+  --l03-muted: #717171;
+  --l03-border: #ebebeb;
+  --l03-surface: #f7f7f7;
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  background: #ffffff;
+  color: var(--l03-ink);
+}
+
+.l03-photo-1 {
+  background: linear-gradient(135deg, #ffb199, #ff385c);
+}
+.l03-photo-2 {
+  background: linear-gradient(135deg, #7fd8cf, #00a699);
+}
+.l03-photo-3 {
+  background: linear-gradient(135deg, #ffd97d, #ff9a3d);
+}
+.l03-photo-4 {
+  background: linear-gradient(135deg, #b8c6ff, #6d83f2);
+}
+.l03-photo-5 {
+  background: linear-gradient(135deg, #ffc2d6, #ff6f91);
+}
+
+.l03-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.l03-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.15);
+}
+
+.l03-pop {
+  animation: l03-pop 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes l03-pop {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .l03-pop {
+    animation: none !important;
+  }
+}

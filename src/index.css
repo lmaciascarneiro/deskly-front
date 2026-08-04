@@ -4,26 +4,26 @@
 
 @layer base {
   :root {
-    --background: 110 16% 93%;
-    --foreground: 153 14% 12%;
-    --card: 90 20% 97%;
-    --card-foreground: 153 14% 12%;
-    --popover: 90 20% 97%;
-    --popover-foreground: 153 14% 12%;
-    --primary: 28 56% 51%;
-    --primary-foreground: 153 14% 12%;
-    --secondary: 136 20% 90%;
-    --secondary-foreground: 136 26% 34%;
-    --muted: 100 12% 89%;
-    --muted-foreground: 144 5% 38%;
-    --accent: 28 40% 90%;
-    --accent-foreground: 153 14% 12%;
-    --destructive: 12 60% 44%;
-    --destructive-foreground: 110 16% 95%;
-    --border: 100 12% 84%;
-    --input: 100 12% 84%;
-    --ring: 28 56% 51%;
-    --radius: 0.75rem;
+    --background: 0 0% 100%;
+    --foreground: 220 49% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 49% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 49% 8%;
+    --primary: 243 75% 59%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 60% 98%;
+    --secondary-foreground: 220 49% 8%;
+    --muted: 240 40% 96%;
+    --muted-foreground: 222 10% 40%;
+    --accent: 83 78% 55%;
+    --accent-foreground: 220 49% 8%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 25% 91%;
+    --input: 240 25% 91%;
+    --ring: 243 75% 59%;
+    --radius: 1rem;
   }
 }
 
@@ -33,5 +33,11 @@
   }
   body {
     @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  .blob-shape {
+    border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
   }
 }

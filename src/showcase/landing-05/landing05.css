@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+.l05 {
+  --l05-indigo: #4f46e5;
+  --l05-lime: #a3e635;
+  --l05-ink: #0b1220;
+  --l05-muted: #5c6270;
+  --l05-lavender: #f5f6ff;
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  background: #ffffff;
+  color: var(--l05-ink);
+}
+
+.l05 .l05-display {
+  font-family: 'Outfit', ui-sans-serif, sans-serif;
+}
+
+.l05-blob {
+  border-radius: 42% 58% 63% 37% / 41% 44% 56% 59%;
+}
+
+.l05-float {
+  animation: l05-float 5s ease-in-out infinite;
+}
+@keyframes l05-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--r, 0deg));
+  }
+  50% {
+    transform: translateY(-10px) rotate(var(--r, 0deg));
+  }
+}
+
+.l05-pop {
+  animation: l05-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes l05-pop {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .l05-float,
+  .l05-pop {
+    animation: none !important;
+  }
+}

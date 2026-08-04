@@ -1,4 +1,5 @@
 import { FormEvent, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FirebaseError } from 'firebase/app';
 import { Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -16,6 +17,7 @@ const FIREBASE_ERROR_MESSAGES: Record<string, string> = {
 
 export const EmailPasswordSignUpForm = () => {
   const { signUpWithEmail, isLoading } = useAuth();
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -32,6 +34,7 @@ export const EmailPasswordSignUpForm = () => {
 
     try {
       await signUpWithEmail(email, password);
+      navigate('/perfil/completar', { replace: true });
     } catch (err) {
       const message =
         err instanceof FirebaseError
@@ -93,7 +96,7 @@ export const EmailPasswordSignUpForm = () => {
 
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
 
-      <Button type="submit" className="w-full" disabled={isLoading}>
+      <Button type="submit" className="w-full rounded-2xl" disabled={isLoading}>
         {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
         Criar conta
       </Button>

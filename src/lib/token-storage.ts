@@ -1,4 +1,4 @@
-import { AuthSession } from '@/types/auth';
+import { AuthSession, AuthUser } from '@/types/auth';
 
 const STORAGE_KEY = 'deskly.auth.session';
 
@@ -21,6 +21,12 @@ export const tokenStorage = {
 
   getAccessToken(): string | null {
     return tokenStorage.get()?.accessToken ?? null;
+  },
+
+  updateUser(user: AuthUser): void {
+    const session = tokenStorage.get();
+    if (!session) return;
+    tokenStorage.save({ ...session, user });
   },
 
   clear(): void {
