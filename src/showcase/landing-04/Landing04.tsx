@@ -4,33 +4,33 @@ import './landing04.css';
 
 const benefits = [
   {
-    title: 'Verificado',
-    description: 'Cada espaço é visitado e aprovado antes de entrar no catálogo.',
+    title: 'Verified',
+    description: 'Every space is visited and approved before joining the catalog.',
   },
   {
-    title: 'Internet rápida',
-    description: 'Velocidade testada. Chega de call caindo no meio da reunião.',
+    title: 'Fast internet',
+    description: 'Speed tested. No more calls dropping mid-meeting.',
   },
   {
-    title: 'Por hora',
-    description: 'Pague só pelo tempo que precisar, do jeito que fizer sentido.',
+    title: 'By the hour',
+    description: 'Pay only for the time you need, in whatever way makes sense.',
   },
   {
-    title: 'Sem burocracia',
-    description: 'Reserve, confirme, trabalhe. Cancelamento simples quando precisar.',
+    title: 'No red tape',
+    description: 'Book, confirm, work. Simple cancellation whenever you need it.',
   },
 ];
 
 const steps = [
-  { title: 'Escolha', description: 'Um espaço que combine com o seu dia.' },
-  { title: 'Confirme', description: 'O horário exato de que você precisa.' },
-  { title: 'Trabalhe', description: 'Com tudo já pronto quando você chegar.' },
+  { title: 'Choose', description: 'A space that fits your day.' },
+  { title: 'Confirm', description: 'The exact time slot you need.' },
+  { title: 'Work', description: 'With everything ready when you arrive.' },
 ];
 
 const workspaces = [
-  { name: 'Estúdio Norte', city: 'São Paulo', price: 'R$ 40/h', field: 'l04-field-1' },
-  { name: 'Sala Quieta', city: 'Lisboa', price: '€ 12/h', field: 'l04-field-2' },
-  { name: 'Varanda Verde', city: 'Florianópolis', price: 'R$ 34/h', field: 'l04-field-3' },
+  { name: 'North Studio', city: 'São Paulo', price: '$40/h', field: 'l04-field-1' },
+  { name: 'Quiet Room', city: 'Lisbon', price: '€12/h', field: 'l04-field-2' },
+  { name: 'Green Balcony', city: 'Florianópolis', price: '$34/h', field: 'l04-field-3' },
 ];
 
 export function Landing04() {
@@ -39,12 +39,12 @@ export function Landing04() {
       <header className="mx-auto flex max-w-5xl items-center justify-between px-6 py-8 sm:px-10">
         <span className="l04-serif text-xl">Deskly</span>
         <nav className="hidden items-center gap-10 text-[13px] text-[var(--l04-muted)] md:flex">
-          <span className="cursor-default">Espaços</span>
-          <span className="cursor-default">Como funciona</span>
-          <span className="cursor-default">Anfitriões</span>
+          <span className="cursor-default">Spaces</span>
+          <span className="cursor-default">How it works</span>
+          <span className="cursor-default">Hosts</span>
         </nav>
         <span className="flex items-center gap-1.5 text-[13px] text-[var(--l04-ink)]">
-          Entrar
+          Sign in
           <ArrowRight size={12} />
         </span>
       </header>
@@ -52,19 +52,19 @@ export function Landing04() {
       <section className="mx-auto max-w-5xl px-6 pb-28 pt-20 sm:px-10 sm:pt-32">
         <div className="l04-fade max-w-3xl">
           <p className="text-[13px] uppercase tracking-[0.2em] text-[var(--l04-muted)]">
-            Deskly &mdash; espaços de trabalho
+            Deskly &mdash; workspaces
           </p>
           <h1 className="l04-serif mt-6 text-[42px] leading-[1.15] sm:text-[64px]">
-            Um lugar <span className="italic text-[var(--l04-blue)]">certo</span> para cada dia
-            de trabalho.
+            The <span className="italic text-[var(--l04-blue)]">right</span> place for every
+            workday.
           </h1>
           <p className="mt-8 max-w-md text-[16px] leading-relaxed text-[var(--l04-muted)]">
-            Encontre e reserve espaços cuidadosamente selecionados. Sem ruído, sem excesso —
-            só o essencial para você produzir bem.
+            Find and book carefully curated spaces. No noise, no excess —
+            just the essentials for you to work well.
           </p>
           <div className="mt-10 flex items-center gap-2 text-[14px]">
             <span className="rounded-full border border-[var(--l04-ink)] px-6 py-2.5">
-              Explorar espaços
+              Explore spaces
             </span>
           </div>
         </div>
@@ -94,7 +94,7 @@ export function Landing04() {
       <section className="border-t border-[var(--l04-line)] px-6 py-28 sm:px-10">
         <div className="mx-auto max-w-5xl">
           <h2 className="l04-serif max-w-md text-3xl leading-snug sm:text-4xl">
-            Detalhes que fazem <span className="italic">diferença</span>.
+            Details that make a <span className="italic">difference</span>.
           </h2>
 
           <div className="mt-16 grid grid-cols-1 gap-x-12 gap-y-12 sm:grid-cols-2">
@@ -115,7 +115,7 @@ export function Landing04() {
 
       <section className="border-t border-[var(--l04-line)] px-6 py-28 sm:px-10">
         <div className="mx-auto max-w-5xl">
-          <h2 className="l04-serif text-3xl sm:text-4xl">Como funciona</h2>
+          <h2 className="l04-serif text-3xl sm:text-4xl">How it works</h2>
 
           <div className="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-3">
             {steps.map((step, i) => (
@@ -135,12 +135,12 @@ export function Landing04() {
 
       <section className="border-t border-[var(--l04-line)] px-6 py-32 text-center sm:px-10">
         <h2 className="l04-serif mx-auto max-w-lg text-3xl leading-snug sm:text-5xl">
-          Seu próximo dia produtivo <span className="italic text-[var(--l04-blue)]">começa</span>{' '}
-          aqui.
+          Your next productive day <span className="italic text-[var(--l04-blue)]">starts</span>{' '}
+          here.
         </h2>
         <div className="mt-10">
           <span className="rounded-full border border-[var(--l04-ink)] px-7 py-3 text-[14px]">
-            Criar conta gratuita
+            Create free account
           </span>
         </div>
       </section>
@@ -149,8 +149,8 @@ export function Landing04() {
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-3 text-[13px] text-[var(--l04-muted)] sm:flex-row">
           <span>&copy; 2026 Deskly</span>
           <div className="flex gap-6">
-            <span className="cursor-default">Privacidade</span>
-            <span className="cursor-default">Termos</span>
+            <span className="cursor-default">Privacy</span>
+            <span className="cursor-default">Terms</span>
             <Link to="/showcase" className="text-[var(--l04-ink)] hover:underline">
               &larr; Showcase
             </Link>

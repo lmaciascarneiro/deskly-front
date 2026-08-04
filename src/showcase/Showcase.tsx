@@ -21,7 +21,7 @@ const landings: LandingMeta[] = [
     title: 'Minimal',
     subtitle: 'Linear / Stripe',
     description:
-      'Preto quase absoluto, tipografia grotesca precisa e hairlines. Para quem confia no produto sem precisar gritar.',
+      'Near-absolute black, precise grotesque typography, and hairlines. For those who trust the product without needing to shout.',
     swatches: ['#0A0A0B', '#6366F1', '#F4F4F5'],
     bg: '#0A0A0B',
     fg: '#F4F4F5',
@@ -34,7 +34,7 @@ const landings: LandingMeta[] = [
     title: 'Modern Gradient',
     subtitle: 'Bold & Vivid',
     description:
-      'Gradientes mesh vibrantes, vidro fosco e muita energia visual. Uma landing que não passa despercebida.',
+      'Vibrant mesh gradients, frosted glass, and lots of visual energy. A landing page that doesn\'t go unnoticed.',
     swatches: ['#7C3AED', '#EC4899', '#F97316'],
     bg: 'linear-gradient(135deg,#7C3AED,#EC4899 60%,#F97316)',
     fg: '#FFFFFF',
@@ -47,7 +47,7 @@ const landings: LandingMeta[] = [
     title: 'Airbnb Style',
     subtitle: 'Warm & Trusted',
     description:
-      'Branco, cantos arredondados, vermelho rausch e cards de espaços fotográficos. Familiar, acolhedor, confiável.',
+      'White, rounded corners, rausch red, and photographic space cards. Familiar, welcoming, trustworthy.',
     swatches: ['#FF385C', '#00A699', '#FFFFFF'],
     bg: '#FFFFFF',
     fg: '#222222',
@@ -60,7 +60,7 @@ const landings: LandingMeta[] = [
     title: 'Apple Style',
     subtitle: 'Notion / Editorial Clean',
     description:
-      'Muito espaço em branco, serifa editorial e uma única cor de destaque usada com moderação cirúrgica.',
+      'Lots of white space, editorial serif type, and a single accent color used with surgical restraint.',
     swatches: ['#FAFAF8', '#1D1D1F', '#0071E3'],
     bg: '#FAFAF8',
     fg: '#1D1D1F',
@@ -71,9 +71,9 @@ const landings: LandingMeta[] = [
     id: 'landing-05',
     number: '05',
     title: 'SaaS Startup',
-    subtitle: 'Cards & Ilustrações',
+    subtitle: 'Cards & Illustrations',
     description:
-      'Azul elétrico, lima vibrante, formas geométricas soltas e cards otimistas. Confiante e brincalhão.',
+      'Electric blue, vibrant lime, loose geometric shapes, and optimistic cards. Confident and playful.',
     swatches: ['#4F46E5', '#A3E635', '#0B1220'],
     bg: '#EEF2FF',
     fg: '#0B1220',
@@ -91,16 +91,16 @@ export function Showcase() {
             Deskly &middot; Design Exploration
           </p>
           <h1 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Showcase de identidades visuais
+            Visual identity showcase
           </h1>
         </div>
       </header>
 
       <main className="mx-auto max-w-6xl px-6 pb-24 sm:px-10">
         <p className="max-w-2xl text-balance text-[15px] leading-relaxed text-[#9799A3]">
-          Cinco conceitos completos de landing page para o Deskly, cada um com identidade
-          tipográfica, paleta e composição próprias. Escolha um cartão para abrir a landing
-          completa.
+          Five complete landing page concepts for Deskly, each with its own typographic
+          identity, palette, and composition. Choose a card to open the full landing
+          page.
         </p>
 
         <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -153,8 +153,8 @@ export function Showcase() {
             to="/"
             className="group flex flex-col items-start justify-center gap-2 rounded-2xl border border-dashed border-[#2A2C33] p-7 text-[#6B6D76] transition-colors duration-300 hover:border-[#454852] hover:text-[#9799A3]"
           >
-            <span className="text-sm">&larr; Voltar para o site atual</span>
-            <span className="text-xs opacity-70">Sai do modo showcase</span>
+            <span className="text-sm">&larr; Back to the current site</span>
+            <span className="text-xs opacity-70">Exit showcase mode</span>
           </Link>
         </div>
       </main>

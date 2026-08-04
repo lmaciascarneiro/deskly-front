@@ -27,7 +27,7 @@ export const WorkspacesList = () => {
     setSubmittedQuery(query);
   };
 
-  // O backend às vezes retorna total_pages=0 mesmo havendo itens na página atual.
+  // The backend sometimes returns total_pages=0 even when there are items on the current page.
   const totalPages = Math.max(data?.totalPages ?? 1, 1);
 
   return (
@@ -36,10 +36,10 @@ export const WorkspacesList = () => {
 
       <main className="mx-auto max-w-6xl px-6 pb-24 pt-6 sm:px-10">
         <span className="font-display text-sm font-bold uppercase tracking-wide text-indigo">
-          Catálogo
+          Catalog
         </span>
         <h1 className="font-display mt-2 text-3xl font-bold sm:text-4xl">
-          Encontre seu próximo workspace
+          Find your next workspace
         </h1>
 
         <form
@@ -49,7 +49,7 @@ export const WorkspacesList = () => {
           <Input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="Buscar por cidade, bairro ou nome..."
+            placeholder="Search by city, neighborhood, or name..."
             className="rounded-2xl"
           />
           <Button type="submit" size="icon" className="shrink-0 rounded-2xl">
@@ -59,15 +59,14 @@ export const WorkspacesList = () => {
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {isLoading ? (
-            <p className="text-sm text-muted-foreground">Carregando espaços…</p>
+            <p className="text-sm text-muted-foreground">Loading spaces…</p>
           ) : isError ? (
             <p className="text-sm text-destructive">
-              Não foi possível carregar os espaços agora. Tente novamente mais
-              tarde.
+              Could not load spaces right now. Please try again later.
             </p>
           ) : !data || data.items.length === 0 ? (
             <p className="text-sm text-muted-foreground">
-              Nenhum espaço encontrado{submittedQuery ? ` para "${submittedQuery}"` : ''}.
+              No spaces found{submittedQuery ? ` for "${submittedQuery}"` : ''}.
             </p>
           ) : (
             data.items.map((workspace) => (
@@ -86,10 +85,10 @@ export const WorkspacesList = () => {
               onClick={() => setPage((p) => Math.max(0, p - 1))}
             >
               <ChevronLeft size={14} />
-              Anterior
+              Previous
             </Button>
             <span className="text-sm text-muted-foreground">
-              Página {page + 1} de {Math.max(totalPages, 1)}
+              Page {page + 1} of {Math.max(totalPages, 1)}
             </span>
             <Button
               variant="outline"
@@ -98,7 +97,7 @@ export const WorkspacesList = () => {
               disabled={page + 1 >= totalPages}
               onClick={() => setPage((p) => p + 1)}
             >
-              Próxima
+              Next
               <ChevronRight size={14} />
             </Button>
           </div>

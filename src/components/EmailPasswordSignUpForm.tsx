@@ -7,12 +7,12 @@ import { Input } from '@/components/ui/input';
 import { useAuth } from '@/context/AuthContext';
 
 const FIREBASE_ERROR_MESSAGES: Record<string, string> = {
-  'auth/email-already-in-use': 'Já existe uma conta com este e-mail.',
-  'auth/invalid-email': 'E-mail inválido.',
-  'auth/weak-password': 'A senha deve ter pelo menos 6 caracteres.',
-  'auth/missing-password': 'Informe uma senha.',
+  'auth/email-already-in-use': 'An account with this email already exists.',
+  'auth/invalid-email': 'Invalid email.',
+  'auth/weak-password': 'Password must be at least 6 characters.',
+  'auth/missing-password': 'Please enter a password.',
   'auth/too-many-requests':
-    'Muitas tentativas sem sucesso. Tente novamente mais tarde.',
+    'Too many failed attempts. Please try again later.',
 };
 
 export const EmailPasswordSignUpForm = () => {
@@ -28,19 +28,19 @@ export const EmailPasswordSignUpForm = () => {
     setError(null);
 
     if (password !== confirmPassword) {
-      setError('As senhas não coincidem.');
+      setError('Passwords do not match.');
       return;
     }
 
     try {
       await signUpWithEmail(email, password);
-      navigate('/perfil/completar', { replace: true });
+      navigate('/profile/complete', { replace: true });
     } catch (err) {
       const message =
         err instanceof FirebaseError
           ? (FIREBASE_ERROR_MESSAGES[err.code] ??
-            'Não foi possível criar sua conta. Tente novamente.')
-          : 'Não foi possível criar sua conta. Tente novamente.';
+            'Could not create your account. Please try again.')
+          : 'Could not create your account. Please try again.';
       setError(message);
     }
   };
@@ -49,7 +49,7 @@ export const EmailPasswordSignUpForm = () => {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-1.5">
         <label htmlFor="signup-email" className="text-sm font-medium">
-          E-mail
+          Email
         </label>
         <Input
           id="signup-email"
@@ -63,7 +63,7 @@ export const EmailPasswordSignUpForm = () => {
 
       <div className="space-y-1.5">
         <label htmlFor="signup-password" className="text-sm font-medium">
-          Senha
+          Password
         </label>
         <Input
           id="signup-password"
@@ -81,7 +81,7 @@ export const EmailPasswordSignUpForm = () => {
           htmlFor="signup-confirm-password"
           className="text-sm font-medium"
         >
-          Confirmar senha
+          Confirm password
         </label>
         <Input
           id="signup-confirm-password"
@@ -98,7 +98,7 @@ export const EmailPasswordSignUpForm = () => {
 
       <Button type="submit" className="w-full rounded-2xl" disabled={isLoading}>
         {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-        Criar conta
+        Sign up
       </Button>
     </form>
   );

@@ -41,7 +41,7 @@ export const HostWorkspacePhotos = () => {
       setDisplayOrder('');
       invalidatePhotos();
     },
-    onError: () => setCreateError('Não foi possível adicionar a foto. Verifique a URL e tente novamente.'),
+    onError: () => setCreateError('Could not add the photo. Check the URL and try again.'),
   });
 
   const updateOrderMutation = useMutation({
@@ -74,12 +74,12 @@ export const HostWorkspacePhotos = () => {
           className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-ink"
         >
           <ArrowLeft size={14} />
-          Voltar para meus espaços
+          Back to my spaces
         </Link>
 
-        <h1 className="font-display mt-4 text-3xl font-bold">Fotos do workspace</h1>
+        <h1 className="font-display mt-4 text-3xl font-bold">Workspace photos</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          As fotos são referenciadas por URL — hospede a imagem em algum serviço e cole o link aqui.
+          Photos are referenced by URL — host the image on some service and paste the link here.
         </p>
 
         <form
@@ -88,7 +88,7 @@ export const HostWorkspacePhotos = () => {
         >
           <div className="flex-1 space-y-1.5">
             <label htmlFor="photo-url" className="text-sm font-medium">
-              URL da foto
+              Photo URL
             </label>
             <Input
               id="photo-url"
@@ -96,12 +96,12 @@ export const HostWorkspacePhotos = () => {
               required
               value={photoUrl}
               onChange={(e) => setPhotoUrl(e.target.value)}
-              placeholder="https://exemplo.com/foto.jpg"
+              placeholder="https://example.com/photo.jpg"
             />
           </div>
           <div className="w-full space-y-1.5 sm:w-28">
             <label htmlFor="photo-order" className="text-sm font-medium">
-              Ordem
+              Order
             </label>
             <Input
               id="photo-order"
@@ -122,7 +122,7 @@ export const HostWorkspacePhotos = () => {
             ) : (
               <Plus size={16} />
             )}
-            Adicionar
+            Add
           </Button>
         </form>
         {createError ? (
@@ -131,14 +131,14 @@ export const HostWorkspacePhotos = () => {
 
         <div className="mt-10 space-y-4">
           {isLoading ? (
-            <p className="text-sm text-muted-foreground">Carregando fotos…</p>
+            <p className="text-sm text-muted-foreground">Loading photos…</p>
           ) : isError ? (
             <p className="text-sm text-destructive">
-              Não foi possível carregar as fotos agora.
+              Could not load photos right now.
             </p>
           ) : !photos || photos.items.length === 0 ? (
             <p className="text-sm text-muted-foreground">
-              Nenhuma foto cadastrada ainda.
+              No photos added yet.
             </p>
           ) : (
             photos.items.map((photo) => (
@@ -180,7 +180,7 @@ export const HostWorkspacePhotos = () => {
                       }
                     }}
                   >
-                    Salvar
+                    Save
                   </Button>
                   <Button
                     variant="outline"
@@ -188,7 +188,7 @@ export const HostWorkspacePhotos = () => {
                     className="rounded-xl text-destructive hover:bg-destructive hover:text-destructive-foreground"
                     disabled={deleteMutation.isPending}
                     onClick={() => {
-                      if (window.confirm('Remover essa foto?')) {
+                      if (window.confirm('Remove this photo?')) {
                         deleteMutation.mutate(photo.id);
                       }
                     }}

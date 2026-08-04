@@ -20,32 +20,32 @@ import './landing03.css';
 const categories = [
   { icon: Home, label: 'Home office' },
   { icon: Building2, label: 'Coworking' },
-  { icon: Users, label: 'Sala de reunião' },
-  { icon: Coffee, label: 'Café' },
-  { icon: Briefcase, label: 'Escritório privado' },
-  { icon: Palette, label: 'Estúdio' },
+  { icon: Users, label: 'Meeting room' },
+  { icon: Coffee, label: 'Cafe' },
+  { icon: Briefcase, label: 'Private office' },
+  { icon: Palette, label: 'Studio' },
 ];
 
 const benefits = [
-  { icon: ShieldCheck, title: 'Espaços verificados', description: 'Cada anúncio é visitado pela nossa equipe.' },
-  { icon: Wifi, title: 'Internet rápida', description: 'Velocidade mínima garantida em todo espaço.' },
-  { icon: Clock, title: 'Reserve por hora', description: 'De 1 hora a um dia inteiro, você decide.' },
-  { icon: BadgeCheck, title: 'Anfitriões avaliados', description: 'Notas e comentários reais de quem já usou.' },
+  { icon: ShieldCheck, title: 'Verified spaces', description: 'Every listing is visited by our team.' },
+  { icon: Wifi, title: 'Fast internet', description: 'Guaranteed minimum speed at every space.' },
+  { icon: Clock, title: 'Book by the hour', description: 'From 1 hour to a full day, you decide.' },
+  { icon: BadgeCheck, title: 'Rated hosts', description: 'Real ratings and reviews from past guests.' },
 ];
 
 const workspaces = [
-  { name: 'Casa Jardim Studio', city: 'Vila Madalena, São Paulo', price: 'R$ 32/h', rating: '4.92', photo: 'l03-photo-1', badge: 'Disponível hoje' },
-  { name: 'Terraço Coworking', city: 'Botafogo, Rio de Janeiro', price: 'R$ 41/h', rating: '4.87', photo: 'l03-photo-2', badge: 'Superhost' },
-  { name: 'Café Trabalha Bem', city: 'Savassi, Belo Horizonte', price: 'R$ 18/h', rating: '4.75', photo: 'l03-photo-3', badge: 'Novo' },
-  { name: 'Sala Executiva Aurora', city: 'Batel, Curitiba', price: 'R$ 55/h', rating: '4.95', photo: 'l03-photo-4', badge: 'Disponível hoje' },
-  { name: 'Home Office da Ana', city: 'Moinhos de Vento, Porto Alegre', price: 'R$ 27/h', rating: '4.81', photo: 'l03-photo-5', badge: 'Superhost' },
-  { name: 'Estúdio Criativo Lumen', city: 'Pinheiros, São Paulo', price: 'R$ 36/h', rating: '4.9', photo: 'l03-photo-2', badge: 'Novo' },
+  { name: 'Casa Jardim Studio', city: 'Vila Madalena, São Paulo', price: '$32/h', rating: '4.92', photo: 'l03-photo-1', badge: 'Available today' },
+  { name: 'Terrace Coworking', city: 'Botafogo, Rio de Janeiro', price: '$41/h', rating: '4.87', photo: 'l03-photo-2', badge: 'Superhost' },
+  { name: 'Cafe Works Well', city: 'Savassi, Belo Horizonte', price: '$18/h', rating: '4.75', photo: 'l03-photo-3', badge: 'New' },
+  { name: 'Aurora Executive Room', city: 'Batel, Curitiba', price: '$55/h', rating: '4.95', photo: 'l03-photo-4', badge: 'Available today' },
+  { name: "Ana's Home Office", city: 'Moinhos de Vento, Porto Alegre', price: '$27/h', rating: '4.81', photo: 'l03-photo-5', badge: 'Superhost' },
+  { name: 'Lumen Creative Studio', city: 'Pinheiros, São Paulo', price: '$36/h', rating: '4.9', photo: 'l03-photo-2', badge: 'New' },
 ];
 
 const steps = [
-  { title: 'Busque', description: 'Filtre por cidade, tipo de espaço e horário desejado.', photo: 'l03-photo-1' },
-  { title: 'Reserve', description: 'Confirme o período e pague com segurança pelo app.', photo: 'l03-photo-2' },
-  { title: 'Trabalhe', description: 'Chegue no horário marcado e aproveite o espaço.', photo: 'l03-photo-3' },
+  { title: 'Search', description: 'Filter by city, space type, and the time you need.', photo: 'l03-photo-1' },
+  { title: 'Book', description: 'Confirm the time slot and pay securely through the app.', photo: 'l03-photo-2' },
+  { title: 'Work', description: 'Arrive at the scheduled time and enjoy the space.', photo: 'l03-photo-3' },
 ];
 
 export function Landing03() {
@@ -59,10 +59,10 @@ export function Landing03() {
 
           <div className="hidden flex-1 items-center justify-center md:flex">
             <div className="flex items-center divide-x divide-[var(--l03-border)] rounded-full border border-[var(--l03-border)] py-2 pl-5 pr-2 shadow-sm transition-shadow hover:shadow-md">
-              <span className="pr-4 text-sm font-semibold">Onde</span>
-              <span className="px-4 text-sm text-[var(--l03-muted)]">Data</span>
+              <span className="pr-4 text-sm font-semibold">Where</span>
+              <span className="px-4 text-sm text-[var(--l03-muted)]">Date</span>
               <span className="flex items-center gap-2 pl-4 text-sm text-[var(--l03-muted)]">
-                Pessoas
+                People
                 <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[var(--l03-rausch)] text-white">
                   <Search size={14} />
                 </span>
@@ -72,7 +72,7 @@ export function Landing03() {
 
           <div className="flex items-center gap-3">
             <span className="hidden cursor-default rounded-full px-4 py-2 text-sm font-semibold transition-colors hover:bg-[var(--l03-surface)] sm:inline">
-              Anuncie seu espaço
+              List your space
             </span>
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--l03-surface)]">
               <Users size={16} />
@@ -101,31 +101,31 @@ export function Landing03() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div className="l03-pop">
             <h1 className="text-[36px] font-extrabold leading-[1.1] tracking-tight sm:text-[52px]">
-              Encontre o workspace perfeito para o seu próximo dia produtivo.
+              Find the perfect workspace for your next productive day.
             </h1>
             <p className="mt-5 max-w-md text-[16px] leading-relaxed text-[var(--l03-muted)]">
-              Milhares de espaços verificados — de cafés aconchegantes a salas executivas —
-              esperando por você em minutos.
+              Thousands of verified spaces — from cozy cafes to executive rooms —
+              waiting for you in minutes.
             </p>
             <button className="mt-8 flex items-center gap-2 rounded-full bg-[var(--l03-rausch)] px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-[var(--l03-rausch)]/25 transition-transform hover:scale-[1.03]">
               <Search size={16} />
-              Buscar workspaces
+              Search workspaces
             </button>
 
             <div className="mt-10 flex items-center gap-6 text-sm">
               <div>
-                <p className="text-xl font-extrabold">2.400+</p>
-                <p className="text-xs text-[var(--l03-muted)]">espaços ativos</p>
+                <p className="text-xl font-extrabold">2,400+</p>
+                <p className="text-xs text-[var(--l03-muted)]">active spaces</p>
               </div>
               <div className="h-8 w-px bg-[var(--l03-border)]" />
               <div>
                 <p className="text-xl font-extrabold">4.8</p>
-                <p className="text-xs text-[var(--l03-muted)]">nota média</p>
+                <p className="text-xs text-[var(--l03-muted)]">average rating</p>
               </div>
               <div className="h-8 w-px bg-[var(--l03-border)]" />
               <div>
                 <p className="text-xl font-extrabold">32</p>
-                <p className="text-xs text-[var(--l03-muted)]">cidades</p>
+                <p className="text-xs text-[var(--l03-muted)]">cities</p>
               </div>
             </div>
           </div>
@@ -143,7 +143,7 @@ export function Landing03() {
               </span>
               <div>
                 <p className="text-sm font-bold">Superhost</p>
-                <p className="text-xs text-[var(--l03-muted)]">98% de aprovação</p>
+                <p className="text-xs text-[var(--l03-muted)]">98% approval</p>
               </div>
             </div>
           </div>
@@ -152,7 +152,7 @@ export function Landing03() {
 
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10">
         <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
-          Por que reservar com a Deskly
+          Why book with Deskly
         </h2>
         <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {benefits.map(({ icon: Icon, title, description }) => (
@@ -171,12 +171,12 @@ export function Landing03() {
 
       <section className="bg-[var(--l03-surface)] px-6 py-20 sm:px-10">
         <div className="mx-auto max-w-7xl">
-          <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">Como funciona</h2>
+          <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">How it works</h2>
           <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-3">
             {steps.map((step, i) => (
               <div key={step.title} className="rounded-3xl bg-white p-6 shadow-sm">
                 <div className={`${step.photo} mb-5 h-36 rounded-2xl`} />
-                <span className="text-xs font-bold text-[var(--l03-rausch)]">Passo {i + 1}</span>
+                <span className="text-xs font-bold text-[var(--l03-rausch)]">Step {i + 1}</span>
                 <h3 className="mt-1 text-lg font-bold">{step.title}</h3>
                 <p className="mt-1.5 text-[13px] leading-relaxed text-[var(--l03-muted)]">
                   {step.description}
@@ -190,10 +190,10 @@ export function Landing03() {
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10">
         <div className="flex items-end justify-between">
           <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">
-            Espaços em destaque
+            Featured spaces
           </h2>
           <span className="hidden text-sm font-semibold text-[var(--l03-ink)] underline decoration-2 underline-offset-4 sm:inline">
-            Ver todos
+            See all
           </span>
         </div>
 
@@ -232,14 +232,14 @@ export function Landing03() {
         <div className="grid grid-cols-1 items-center gap-10 overflow-hidden rounded-[2.5rem] bg-[var(--l03-ink)] px-8 py-14 text-white sm:grid-cols-2 sm:px-14">
           <div>
             <h2 className="text-3xl font-extrabold leading-tight sm:text-4xl">
-              Tem um espaço bacana? Torne-se anfitrião.
+              Have a great space? Become a host.
             </h2>
             <p className="mt-4 max-w-sm text-[15px] leading-relaxed text-white/70">
-              Transforme horas ociosas do seu espaço em renda extra recebendo profissionais
-              remotos verificados.
+              Turn your space's idle hours into extra income by hosting verified
+              remote professionals.
             </p>
             <button className="mt-7 rounded-full bg-white px-7 py-3.5 text-sm font-bold text-[var(--l03-ink)] transition-transform hover:scale-[1.03]">
-              Anuncie seu espaço
+              List your space
             </button>
           </div>
           <div className="grid grid-cols-2 gap-3">
@@ -252,24 +252,24 @@ export function Landing03() {
       <footer className="border-t border-[var(--l03-border)] bg-[var(--l03-surface)] px-6 py-14 sm:px-10">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 text-sm sm:grid-cols-4">
           <div className="space-y-3">
-            <p className="font-bold">Suporte</p>
-            <p className="text-[var(--l03-muted)]">Central de ajuda</p>
-            <p className="text-[var(--l03-muted)]">Segurança</p>
+            <p className="font-bold">Support</p>
+            <p className="text-[var(--l03-muted)]">Help center</p>
+            <p className="text-[var(--l03-muted)]">Safety</p>
           </div>
           <div className="space-y-3">
-            <p className="font-bold">Comunidade</p>
+            <p className="font-bold">Community</p>
             <p className="text-[var(--l03-muted)]">Deskly.org</p>
-            <p className="text-[var(--l03-muted)]">Acessibilidade</p>
+            <p className="text-[var(--l03-muted)]">Accessibility</p>
           </div>
           <div className="space-y-3">
-            <p className="font-bold">Anfitrião</p>
-            <p className="text-[var(--l03-muted)]">Anuncie seu espaço</p>
-            <p className="text-[var(--l03-muted)]">Recursos</p>
+            <p className="font-bold">Hosting</p>
+            <p className="text-[var(--l03-muted)]">List your space</p>
+            <p className="text-[var(--l03-muted)]">Resources</p>
           </div>
           <div className="space-y-3">
             <p className="font-bold">Deskly</p>
-            <p className="text-[var(--l03-muted)]">Sobre</p>
-            <p className="text-[var(--l03-muted)]">Carreiras</p>
+            <p className="text-[var(--l03-muted)]">About</p>
+            <p className="text-[var(--l03-muted)]">Careers</p>
           </div>
         </div>
         <div className="mx-auto mt-10 flex max-w-7xl flex-col items-center justify-between gap-3 border-t border-[var(--l03-border)] pt-6 text-xs text-[var(--l03-muted)] sm:flex-row">

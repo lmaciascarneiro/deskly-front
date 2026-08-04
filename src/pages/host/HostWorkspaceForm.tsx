@@ -49,7 +49,7 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
 
     const price = Number(pricePerHour.replace(',', '.'));
     if (Number.isNaN(price) || price <= 0) {
-      setError('Informe um preço por hora válido.');
+      setError('Please enter a valid hourly price.');
       return;
     }
 
@@ -64,7 +64,7 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
           description: description || undefined,
           neighborhood: neighborhood || undefined,
         });
-        navigate(`/host/workspaces/${newId}/fotos`, { replace: true });
+        navigate(`/host/workspaces/${newId}/photos`, { replace: true });
       } else if (id) {
         await hostWorkspaceService.update(id, {
           ...(title ? { title } : {}),
@@ -77,7 +77,7 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
         navigate('/host/workspaces', { replace: true });
       }
     } catch {
-      setError('Não foi possível salvar o workspace. Tente novamente.');
+      setError('Could not save the workspace. Please try again.');
     } finally {
       setIsSaving(false);
     }
@@ -88,7 +88,7 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
       <div className="min-h-screen bg-white">
         <AppHeader />
         <p className="mx-auto max-w-2xl px-6 py-16 text-sm text-muted-foreground">
-          Carregando workspace…
+          Loading workspace…
         </p>
         <AppFooter />
       </div>
@@ -103,33 +103,33 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
         <Card className="rounded-3xl border-none shadow-xl">
           <CardHeader>
             <CardTitle className="font-display text-3xl font-bold">
-              {isEdit ? 'Editar workspace' : 'Criar workspace'}
+              {isEdit ? 'Edit workspace' : 'Create workspace'}
             </CardTitle>
             <CardDescription>
               {isEdit
-                ? 'A API não retorna descrição, endereço e bairro atuais — preencha novamente só se quiser alterá-los.'
-                : 'Preencha as informações do seu espaço.'}
+                ? "The API doesn't return the current description, address, and neighborhood — fill them in again only if you want to change them."
+                : 'Fill in the information for your space.'}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-1.5">
                 <label htmlFor="ws-title" className="text-sm font-medium">
-                  Título
+                  Title
                 </label>
                 <Input
                   id="ws-title"
                   required
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  placeholder="Estúdio Aurora"
+                  placeholder="Aurora Studio"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
                   <label htmlFor="ws-city" className="text-sm font-medium">
-                    Cidade
+                    City
                   </label>
                   <Input
                     id="ws-city"
@@ -141,7 +141,7 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
                 </div>
                 <div className="space-y-1.5">
                   <label htmlFor="ws-neighborhood" className="text-sm font-medium">
-                    Bairro
+                    Neighborhood
                   </label>
                   <Input
                     id="ws-neighborhood"
@@ -154,20 +154,20 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
 
               <div className="space-y-1.5">
                 <label htmlFor="ws-address" className="text-sm font-medium">
-                  Endereço
+                  Address
                 </label>
                 <Input
                   id="ws-address"
                   required={!isEdit}
                   value={address}
                   onChange={(e) => setAddress(e.target.value)}
-                  placeholder="Rua Harmonia, 123"
+                  placeholder="Harmonia Street, 123"
                 />
               </div>
 
               <div className="space-y-1.5">
                 <label htmlFor="ws-description" className="text-sm font-medium">
-                  Descrição
+                  Description
                 </label>
                 <textarea
                   id="ws-description"
@@ -175,13 +175,13 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
                   onChange={(e) => setDescription(e.target.value)}
                   rows={3}
                   className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  placeholder="Conte o que torna esse espaço especial."
+                  placeholder="Tell people what makes this space special."
                 />
               </div>
 
               <div className="space-y-1.5">
                 <label htmlFor="ws-price" className="text-sm font-medium">
-                  Preço por hora (R$)
+                  Price per hour (R$)
                 </label>
                 <Input
                   id="ws-price"
@@ -199,7 +199,7 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
 
               <Button type="submit" className="w-full rounded-2xl" disabled={isSaving}>
                 {isSaving ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-                {isEdit ? 'Salvar alterações' : 'Criar workspace'}
+                {isEdit ? 'Save changes' : 'Create workspace'}
               </Button>
             </form>
           </CardContent>

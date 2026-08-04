@@ -16,16 +16,16 @@ import { Button } from '@/components/ui/button';
 import { workspaceService } from '@/services/workspace.service';
 
 const benefits = [
-  { icon: ShieldCheck, title: 'Espaços verificados', description: 'Vistoria presencial antes de qualquer anúncio ir ao ar.' },
-  { icon: Wifi, title: 'Internet rápida', description: 'Testamos a velocidade real de cada unidade parceira.' },
-  { icon: Coffee, title: 'Café incluso', description: 'Boa parte dos espaços já vem com café liberado.' },
-  { icon: Clock, title: 'Flexível por hora', description: 'Reserve só o tempo que precisa, sem pacote fechado.' },
+  { icon: ShieldCheck, title: 'Verified spaces', description: 'In-person inspection before any listing goes live.' },
+  { icon: Wifi, title: 'Fast internet', description: 'We test the real speed of every partner location.' },
+  { icon: Coffee, title: 'Coffee included', description: 'Most spaces already come with free coffee.' },
+  { icon: Clock, title: 'Flexible by the hour', description: 'Book only the time you need, no fixed packages.' },
 ];
 
 const steps = [
-  { title: 'Descubra', description: 'Explore espaços perto de você com poucos cliques.' },
-  { title: 'Reserve', description: 'Escolha o horário certo e confirme na hora.' },
-  { title: 'Produza', description: 'Chegue, conecte e comece a trabalhar.' },
+  { title: 'Discover', description: 'Explore spaces near you in just a few clicks.' },
+  { title: 'Book', description: 'Pick the right time slot and confirm instantly.' },
+  { title: 'Produce', description: 'Arrive, connect, and start working.' },
 ];
 
 export const Home = () => {
@@ -42,26 +42,26 @@ export const Home = () => {
         <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-14 lg:grid-cols-2">
           <div>
             <span className="font-display inline-flex items-center gap-1.5 rounded-full bg-lime/20 px-4 py-1.5 text-xs font-bold text-[#4d7c0f]">
-              <Sparkles size={12} /> Novo em 12 cidades
+              <Sparkles size={12} /> New in 12 cities
             </span>
             <h1 className="font-display mt-6 text-[38px] font-bold leading-[1.1] sm:text-[54px]">
-              Seu escritório,
+              Your office,
               <br />
-              onde a vida te levar.
+              wherever life takes you.
             </h1>
             <p className="mt-6 max-w-md text-[15px] leading-relaxed text-muted-foreground">
-              Encontre workspaces verificados perto de você e reserve em minutos. Coworkings,
-              salas de reunião e cafés prontos pra produtividade.
+              Find verified workspaces near you and book in minutes. Coworking spaces,
+              meeting rooms, and cafes ready for productivity.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button size="lg" className="rounded-2xl shadow-lg shadow-indigo-200" asChild>
                 <Link to="/workspaces" className="flex items-center justify-center gap-2">
-                  Buscar workspace
+                  Find a workspace
                   <ArrowRight size={15} />
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="rounded-2xl border-2 border-ink" asChild>
-                <Link to="/signup">Criar conta grátis</Link>
+                <Link to="/signup">Create free account</Link>
               </Button>
             </div>
           </div>
@@ -76,7 +76,7 @@ export const Home = () => {
               </div>
               <div className="absolute -right-2 bottom-10 flex items-center gap-2 rounded-xl bg-white px-3 py-2 text-xs font-semibold shadow-lg">
                 <Coffee size={14} className="text-indigo" />
-                Café incluso
+                Coffee included
               </div>
             </div>
           </div>
@@ -87,10 +87,10 @@ export const Home = () => {
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
             <span className="font-display text-sm font-bold uppercase tracking-wide text-indigo">
-              Benefícios
+              Benefits
             </span>
             <h2 className="font-display mt-3 text-3xl font-bold sm:text-4xl">
-              Feito pra facilitar seu dia
+              Made to make your day easier
             </h2>
           </div>
 
@@ -117,10 +117,10 @@ export const Home = () => {
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
             <span className="font-display text-sm font-bold uppercase tracking-wide text-indigo">
-              Como funciona
+              How it works
             </span>
             <h2 className="font-display mt-3 text-3xl font-bold sm:text-4xl">
-              Três passos simples
+              Three simple steps
             </h2>
           </div>
 
@@ -146,26 +146,26 @@ export const Home = () => {
           <div className="flex items-end justify-between">
             <div>
               <span className="font-display text-sm font-bold uppercase tracking-wide text-indigo">
-                Catálogo
+                Catalog
               </span>
               <h2 className="font-display mt-3 text-3xl font-bold sm:text-4xl">
-                Espaços em destaque
+                Featured spaces
               </h2>
             </div>
             <Link
               to="/workspaces"
               className="hidden items-center gap-1 text-sm font-semibold text-ink hover:underline sm:flex"
             >
-              Ver todos <ArrowRight size={14} />
+              See all <ArrowRight size={14} />
             </Link>
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
             {isLoading ? (
-              <p className="text-sm text-muted-foreground">Carregando espaços…</p>
+              <p className="text-sm text-muted-foreground">Loading spaces…</p>
             ) : isError || !data || data.items.length === 0 ? (
               <p className="text-sm text-muted-foreground">
-                Nenhum espaço disponível no momento. Volte em breve.
+                No spaces available right now. Check back soon.
               </p>
             ) : (
               data.items.map((workspace) => (
@@ -181,9 +181,9 @@ export const Home = () => {
           <div className="blob-shape absolute -right-16 -top-16 h-56 w-56 bg-lime/30" />
           <div className="blob-shape absolute -bottom-20 -left-10 h-64 w-64 bg-white/10" />
           <h2 className="font-display relative text-3xl font-bold sm:text-5xl">
-            Pronto pro seu próximo
+            Ready for your next
             <br />
-            dia produtivo?
+            productive day?
           </h2>
           <Button
             size="lg"
@@ -191,7 +191,7 @@ export const Home = () => {
             asChild
           >
             <Link to="/signup" className="flex items-center justify-center gap-2">
-              Criar conta gratuita
+              Create free account
               <ArrowRight size={15} />
             </Link>
           </Button>

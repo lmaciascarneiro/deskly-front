@@ -49,7 +49,7 @@ function App() {
           }
         />
         <Route
-          path="/perfil/completar"
+          path="/profile/complete"
           element={
             <ProtectedRoute>
               <EditProfile mode="onboarding" />
@@ -57,7 +57,7 @@ function App() {
           }
         />
         <Route
-          path="/perfil/editar"
+          path="/profile/edit"
           element={
             <ProtectedRoute>
               <EditProfile mode="settings" />
@@ -76,7 +76,7 @@ function App() {
           }
         />
         <Route
-          path="/host/workspaces/novo"
+          path="/host/workspaces/new"
           element={
             <HostRoute>
               <HostWorkspaceForm mode="create" />
@@ -84,7 +84,7 @@ function App() {
           }
         />
         <Route
-          path="/host/workspaces/:id/editar"
+          path="/host/workspaces/:id/edit"
           element={
             <HostRoute>
               <HostWorkspaceForm mode="edit" />
@@ -92,7 +92,7 @@ function App() {
           }
         />
         <Route
-          path="/host/workspaces/:id/fotos"
+          path="/host/workspaces/:id/photos"
           element={
             <HostRoute>
               <HostWorkspacePhotos />

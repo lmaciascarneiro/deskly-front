@@ -14,48 +14,48 @@ import './landing01.css';
 const benefits = [
   {
     icon: ShieldCheck,
-    title: 'Espaços verificados',
-    description: 'Toda unidade passa por inspeção antes de entrar na plataforma.',
+    title: 'Verified spaces',
+    description: 'Every location goes through an inspection before joining the platform.',
   },
   {
     icon: Wifi,
-    title: 'Internet dedicada',
-    description: 'Mínimo de 100mbps garantido, testado em cada visita de verificação.',
+    title: 'Dedicated internet',
+    description: 'A guaranteed minimum of 100mbps, tested on every verification visit.',
   },
   {
     icon: Timer,
-    title: 'Reserva por hora',
-    description: 'Pague só pelo tempo que for usar — de uma hora a um dia inteiro.',
+    title: 'Book by the hour',
+    description: 'Pay only for the time you use — from one hour to a full day.',
   },
   {
     icon: CalendarCheck,
-    title: 'Cancelamento flexível',
-    description: 'Reagende ou cancele até 2h antes sem custo adicional.',
+    title: 'Flexible cancellation',
+    description: 'Reschedule or cancel up to 2h before with no extra cost.',
   },
 ];
 
 const steps = [
   {
     n: '01',
-    title: 'Escolha o espaço',
-    description: 'Filtre por cidade, tipo de ambiente e recursos disponíveis.',
+    title: 'Choose the space',
+    description: 'Filter by city, environment type, and available amenities.',
   },
   {
     n: '02',
-    title: 'Confirme o horário',
-    description: 'Selecione o período exato — sem pacotes fechados ou mínimos.',
+    title: 'Confirm the time',
+    description: 'Select the exact time slot — no fixed packages or minimums.',
   },
   {
     n: '03',
-    title: 'Chegue e trabalhe',
-    description: 'Check-in digital. O anfitrião já recebe sua confirmação.',
+    title: 'Arrive and work',
+    description: 'Digital check-in. The host receives your confirmation instantly.',
   },
 ];
 
 const workspaces = [
-  { name: 'Estúdio Aurora', city: 'São Paulo, SP', price: 'R$ 39/h', rating: '4.9' },
-  { name: 'Base Coworking', city: 'Florianópolis, SC', price: 'R$ 28/h', rating: '4.8' },
-  { name: 'Sala Meridiano', city: 'Belo Horizonte, MG', price: 'R$ 45/h', rating: '5.0' },
+  { name: 'Aurora Studio', city: 'São Paulo, SP', price: '$39/h', rating: '4.9' },
+  { name: 'Base Coworking', city: 'Florianópolis, SC', price: '$28/h', rating: '4.8' },
+  { name: 'Meridian Room', city: 'Belo Horizonte, MG', price: '$45/h', rating: '5.0' },
 ];
 
 export function Landing01() {
@@ -70,15 +70,15 @@ export function Landing01() {
             <span className="text-[15px] font-semibold tracking-tight">Deskly</span>
           </div>
           <nav className="hidden items-center gap-8 text-sm text-[var(--l01-muted)] md:flex">
-            <span className="cursor-default transition-colors hover:text-[var(--l01-fg)]">Produto</span>
-            <span className="cursor-default transition-colors hover:text-[var(--l01-fg)]">Como funciona</span>
-            <span className="cursor-default transition-colors hover:text-[var(--l01-fg)]">Para anfitriões</span>
-            <span className="cursor-default transition-colors hover:text-[var(--l01-fg)]">Preços</span>
+            <span className="cursor-default transition-colors hover:text-[var(--l01-fg)]">Product</span>
+            <span className="cursor-default transition-colors hover:text-[var(--l01-fg)]">How it works</span>
+            <span className="cursor-default transition-colors hover:text-[var(--l01-fg)]">For hosts</span>
+            <span className="cursor-default transition-colors hover:text-[var(--l01-fg)]">Pricing</span>
           </nav>
           <div className="flex items-center gap-3">
-            <span className="hidden cursor-default text-sm text-[var(--l01-muted)] sm:inline">Entrar</span>
+            <span className="hidden cursor-default text-sm text-[var(--l01-muted)] sm:inline">Sign in</span>
             <button className="rounded-full bg-[var(--l01-fg)] px-4 py-1.5 text-sm font-medium text-[var(--l01-bg)] transition-transform hover:scale-[1.03]">
-              Começar
+              Get started
             </button>
           </div>
         </div>
@@ -92,24 +92,24 @@ export function Landing01() {
           <div className="relative mx-auto max-w-3xl text-center">
             <span className="l01-fade-up l01-mono inline-flex items-center gap-2 rounded-full border border-[var(--l01-border-strong)] px-3 py-1 text-[11px] uppercase tracking-[0.15em] text-[var(--l01-muted)]">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--l01-indigo)]" />
-              Workspaces sob demanda
+              On-demand workspaces
             </span>
 
             <h1
               className="l01-fade-up mt-6 text-[42px] font-semibold leading-[1.08] tracking-tight sm:text-[64px]"
               style={{ animationDelay: '0.05s' }}
             >
-              O escritório certo,
+              The right office,
               <br />
-              <span className="l01-gradient-text">a qualquer hora.</span>
+              <span className="l01-gradient-text">any time.</span>
             </h1>
 
             <p
               className="l01-fade-up mx-auto mt-6 max-w-xl text-[16px] leading-relaxed text-[var(--l01-muted)]"
               style={{ animationDelay: '0.1s' }}
             >
-              Reserve coworkings, salas de reunião e home offices verificados em minutos.
-              Sem contrato, sem mensalidade — só o tempo que você precisa.
+              Book verified coworking spaces, meeting rooms, and home offices in minutes.
+              No contract, no subscription — just the time you need.
             </p>
 
             <div
@@ -117,11 +117,11 @@ export function Landing01() {
               style={{ animationDelay: '0.15s' }}
             >
               <button className="flex items-center gap-1.5 rounded-full bg-[var(--l01-fg)] px-5 py-2.5 text-sm font-medium text-[var(--l01-bg)] transition-transform hover:scale-[1.03]">
-                Reservar workspace
+                Book a workspace
                 <ArrowRight size={15} />
               </button>
               <button className="flex items-center gap-1.5 rounded-full border border-[var(--l01-border-strong)] px-5 py-2.5 text-sm font-medium text-[var(--l01-fg)] transition-colors hover:border-[var(--l01-muted)]">
-                Ver como funciona
+                See how it works
               </button>
             </div>
           </div>
@@ -136,7 +136,7 @@ export function Landing01() {
                 <span className="h-2.5 w-2.5 rounded-full bg-[#333]" />
                 <span className="h-2.5 w-2.5 rounded-full bg-[#333]" />
                 <span className="l01-mono ml-3 text-[11px] text-[var(--l01-muted)]">
-                  deskly.app/reservas
+                  deskly.app/bookings
                 </span>
               </div>
               <div className="grid grid-cols-1 divide-y divide-[var(--l01-border)] sm:grid-cols-3 sm:divide-x sm:divide-y-0">
@@ -164,10 +164,10 @@ export function Landing01() {
         <section className="border-t border-[var(--l01-border)] px-6 py-24 sm:px-8">
           <div className="mx-auto max-w-6xl">
             <p className="l01-mono text-xs uppercase tracking-[0.2em] text-[var(--l01-muted)]">
-              Por que Deskly
+              Why Deskly
             </p>
             <h2 className="mt-3 max-w-lg text-3xl font-semibold tracking-tight sm:text-4xl">
-              Feito para quem trabalha de qualquer lugar.
+              Made for people who work from anywhere.
             </h2>
           </div>
 
@@ -189,10 +189,10 @@ export function Landing01() {
         <section className="border-t border-[var(--l01-border)] px-6 py-24 sm:px-8">
           <div className="mx-auto max-w-4xl">
             <p className="l01-mono text-xs uppercase tracking-[0.2em] text-[var(--l01-muted)]">
-              Como funciona
+              How it works
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Três passos até sua próxima mesa.
+              Three steps to your next desk.
             </h2>
 
             <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3">
@@ -221,14 +221,14 @@ export function Landing01() {
             <div className="flex items-end justify-between">
               <div>
                 <p className="l01-mono text-xs uppercase tracking-[0.2em] text-[var(--l01-muted)]">
-                  Catálogo
+                  Catalog
                 </p>
                 <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Espaços em destaque
+                  Featured spaces
                 </h2>
               </div>
               <span className="hidden items-center gap-1 text-sm text-[var(--l01-muted)] sm:flex">
-                Ver todos <ArrowUpRight size={14} />
+                See all <ArrowUpRight size={14} />
               </span>
             </div>
 
@@ -254,7 +254,7 @@ export function Landing01() {
                   <div className="mt-4 flex items-center justify-between border-t border-[var(--l01-border)] pt-4">
                     <span className="l01-mono text-sm text-[var(--l01-fg)]">{w.price}</span>
                     <span className="text-xs text-[var(--l01-muted)] transition-colors group-hover:text-[var(--l01-fg)]">
-                      Reservar &rarr;
+                      Book &rarr;
                     </span>
                   </div>
                 </div>
@@ -267,12 +267,12 @@ export function Landing01() {
           <div className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-[var(--l01-border)] bg-[var(--l01-bg-elev)] px-8 py-16 text-center">
             <div className="l01-orb left-1/2 top-0 h-56 w-56 -translate-x-1/2 -translate-y-1/2" />
             <h2 className="relative text-3xl font-semibold tracking-tight sm:text-4xl">
-              Seu próximo dia produtivo
+              Your next productive day
               <br />
-              <span className="l01-gradient-text">começa em minutos.</span>
+              <span className="l01-gradient-text">starts in minutes.</span>
             </h2>
             <button className="relative mt-8 inline-flex items-center gap-1.5 rounded-full bg-[var(--l01-fg)] px-6 py-2.5 text-sm font-medium text-[var(--l01-bg)] transition-transform hover:scale-[1.03]">
-              Criar conta gratuita
+              Create free account
               <ArrowRight size={15} />
             </button>
           </div>
@@ -289,31 +289,31 @@ export function Landing01() {
               <span className="text-[15px] font-semibold tracking-tight">Deskly</span>
             </div>
             <p className="mt-3 max-w-xs text-[13px] text-[var(--l01-muted)]">
-              Espaços de trabalho verificados, reservados em minutos.
+              Verified workspaces, booked in minutes.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-10 text-[13px] text-[var(--l01-muted)] sm:grid-cols-3">
             <div className="space-y-2">
-              <p className="text-[var(--l01-fg)]">Produto</p>
-              <p>Como funciona</p>
-              <p>Para anfitriões</p>
-              <p>Preços</p>
+              <p className="text-[var(--l01-fg)]">Product</p>
+              <p>How it works</p>
+              <p>For hosts</p>
+              <p>Pricing</p>
             </div>
             <div className="space-y-2">
-              <p className="text-[var(--l01-fg)]">Empresa</p>
-              <p>Sobre</p>
-              <p>Carreiras</p>
+              <p className="text-[var(--l01-fg)]">Company</p>
+              <p>About</p>
+              <p>Careers</p>
               <p>Blog</p>
             </div>
             <div className="space-y-2">
               <p className="text-[var(--l01-fg)]">Legal</p>
-              <p>Privacidade</p>
-              <p>Termos</p>
+              <p>Privacy</p>
+              <p>Terms</p>
             </div>
           </div>
         </div>
         <div className="mx-auto mt-12 flex max-w-6xl items-center justify-between border-t border-[var(--l01-border)] pt-6 text-xs text-[var(--l01-muted)]">
-          <span>&copy; 2026 Deskly. Todos os direitos reservados.</span>
+          <span>&copy; 2026 Deskly. All rights reserved.</span>
           <Link to="/showcase" className="transition-colors hover:text-[var(--l01-fg)]">
             &larr; Showcase
           </Link>

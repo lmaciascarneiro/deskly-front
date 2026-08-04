@@ -38,34 +38,34 @@ export const HostWorkspacesList = () => {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <span className="font-display text-sm font-bold uppercase tracking-wide text-indigo">
-              Modo host
+              Host mode
             </span>
             <h1 className="font-display mt-2 text-3xl font-bold sm:text-4xl">
-              Meus espaços
+              My spaces
             </h1>
           </div>
           <Button className="rounded-2xl shadow-lg shadow-indigo-200" asChild>
-            <Link to="/host/workspaces/novo" className="flex items-center gap-2">
+            <Link to="/host/workspaces/new" className="flex items-center gap-2">
               <Plus size={16} />
-              Novo workspace
+              New workspace
             </Link>
           </Button>
         </div>
 
         <div className="mt-10 space-y-4">
           {isLoading ? (
-            <p className="text-sm text-muted-foreground">Carregando seus espaços…</p>
+            <p className="text-sm text-muted-foreground">Loading your spaces…</p>
           ) : isError ? (
             <p className="text-sm text-destructive">
-              Não foi possível carregar seus espaços agora.
+              Could not load your spaces right now.
             </p>
           ) : !data || data.items.length === 0 ? (
             <div className="rounded-3xl border border-dashed border-border p-10 text-center">
               <p className="text-sm text-muted-foreground">
-                Você ainda não tem nenhum workspace cadastrado.
+                You don't have any workspace registered yet.
               </p>
               <Button className="mt-4 rounded-2xl" asChild>
-                <Link to="/host/workspaces/novo">Criar meu primeiro workspace</Link>
+                <Link to="/host/workspaces/new">Create my first workspace</Link>
               </Button>
             </div>
           ) : (
@@ -98,20 +98,20 @@ export const HostWorkspacesList = () => {
                 <div className="flex items-center gap-2">
                   <Button variant="outline" size="sm" className="rounded-xl" asChild>
                     <Link
-                      to={`/host/workspaces/${workspace.id}/editar`}
+                      to={`/host/workspaces/${workspace.id}/edit`}
                       className="flex items-center gap-1.5"
                     >
                       <Pencil size={13} />
-                      Editar
+                      Edit
                     </Link>
                   </Button>
                   <Button variant="outline" size="sm" className="rounded-xl" asChild>
                     <Link
-                      to={`/host/workspaces/${workspace.id}/fotos`}
+                      to={`/host/workspaces/${workspace.id}/photos`}
                       className="flex items-center gap-1.5"
                     >
                       <Images size={13} />
-                      Fotos
+                      Photos
                     </Link>
                   </Button>
                   <Button
@@ -120,7 +120,7 @@ export const HostWorkspacesList = () => {
                     className="rounded-xl text-destructive hover:bg-destructive hover:text-destructive-foreground"
                     disabled={deletingId === workspace.id}
                     onClick={() => {
-                      if (window.confirm(`Excluir "${workspace.title}"? Essa ação não pode ser desfeita.`)) {
+                      if (window.confirm(`Delete "${workspace.title}"? This action cannot be undone.`)) {
                         deleteMutation.mutate(workspace.id);
                       }
                     }}

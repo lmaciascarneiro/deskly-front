@@ -1,7 +1,7 @@
 import { Page, PageResponseDto, mapPage } from '@/types/pagination';
 
-// Shape confirmada via GET /v3/api-docs (schema WorkspaceResponse) — a resposta
-// não inclui description/address/neighborhood/lat/long, só o request de criação.
+// Shape confirmed via GET /v3/api-docs (WorkspaceResponse schema) — the response
+// doesn't include description/address/neighborhood/lat/long, only the create request.
 export interface WorkspaceDto {
   id: string;
   host_id: string;

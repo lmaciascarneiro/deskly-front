@@ -31,7 +31,7 @@ export const AppHeader = () => {
       <div className="flex items-center gap-3">
         <nav className="hidden items-center gap-2 rounded-full bg-secondary p-1 text-sm font-medium md:flex">
           <Link to="/workspaces" className="rounded-full px-4 py-1.5 transition-colors hover:bg-white">
-            Espaços
+            Spaces
           </Link>
         </nav>
 
@@ -48,7 +48,7 @@ export const AppHeader = () => {
               )}
             >
               <Compass size={13} />
-              Explorar
+              Explore
             </button>
             <button
               type="button"
@@ -61,7 +61,7 @@ export const AppHeader = () => {
               )}
             >
               <Building2 size={13} />
-              Anunciar
+              Host
             </button>
           </div>
         ) : null}
@@ -70,23 +70,23 @@ export const AppHeader = () => {
       {isAuthenticated && user ? (
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/perfil/editar" className="flex items-center gap-1.5">
+            <Link to="/profile/edit" className="flex items-center gap-1.5">
               <UserRound className="h-3.5 w-3.5" />
               <span className="max-w-[8rem] truncate">{user.name ?? user.email}</span>
             </Link>
           </Button>
           <Button variant="outline" size="sm" onClick={() => signOut()}>
             <LogOut className="h-3.5 w-3.5" />
-            Sair
+            Sign out
           </Button>
         </div>
       ) : (
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="sm" asChild>
-            <Link to="/login">Entrar</Link>
+            <Link to="/login">Sign in</Link>
           </Button>
           <Button size="sm" className="rounded-full shadow-lg shadow-indigo-200" asChild>
-            <Link to="/signup">Criar conta</Link>
+            <Link to="/signup">Sign up</Link>
           </Button>
         </div>
       )}

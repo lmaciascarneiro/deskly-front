@@ -17,14 +17,14 @@ import { userService } from '@/services/user.service';
 
 const COPY = {
   onboarding: {
-    title: 'Complete seu cadastro',
-    description: 'Só mais um passo antes de explorar a Deskly.',
-    submitLabel: 'Continuar',
+    title: 'Complete your profile',
+    description: 'Just one more step before exploring Deskly.',
+    submitLabel: 'Continue',
   },
   settings: {
-    title: 'Editar cadastro',
-    description: 'Atualize suas informações pessoais.',
-    submitLabel: 'Salvar alterações',
+    title: 'Edit profile',
+    description: 'Update your personal information.',
+    submitLabel: 'Save changes',
   },
 };
 
@@ -61,7 +61,7 @@ export const EditProfile = ({ mode }: { mode: 'onboarding' | 'settings' }) => {
         setSaved(true);
       }
     } catch {
-      setError('Não foi possível salvar suas informações. Tente novamente.');
+      setError('Could not save your information. Please try again.');
     } finally {
       setIsSaving(false);
     }
@@ -83,20 +83,20 @@ export const EditProfile = ({ mode }: { mode: 'onboarding' | 'settings' }) => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-1.5">
                 <label htmlFor="profile-name" className="text-sm font-medium">
-                  Nome
+                  Name
                 </label>
                 <Input
                   id="profile-name"
                   required
                   value={name}
                   onChange={(event) => setName(event.target.value)}
-                  placeholder="Como podemos te chamar?"
+                  placeholder="What should we call you?"
                 />
               </div>
 
               <div className="space-y-1.5">
                 <label htmlFor="profile-phone" className="text-sm font-medium">
-                  Telefone
+                  Phone
                 </label>
                 <Input
                   id="profile-phone"
@@ -116,18 +116,18 @@ export const EditProfile = ({ mode }: { mode: 'onboarding' | 'settings' }) => {
                 />
                 <span>
                   <span className="block text-sm font-medium">
-                    Quero anunciar meus espaços
+                    I want to list my spaces
                   </span>
                   <span className="block text-xs text-muted-foreground">
-                    Ative o modo host para futuramente cadastrar workspaces e
-                    receber reservas.
+                    Enable host mode to register workspaces and receive
+                    bookings in the future.
                   </span>
                 </span>
               </label>
 
               {error ? <p className="text-sm text-destructive">{error}</p> : null}
               {saved ? (
-                <p className="text-sm text-[#4d7c0f]">Alterações salvas.</p>
+                <p className="text-sm text-[#4d7c0f]">Changes saved.</p>
               ) : null}
 
               <Button

@@ -10,24 +10,24 @@ export const AppFooter = () => {
             <span className="font-display text-lg font-bold">Deskly</span>
           </div>
           <p className="mt-3 max-w-xs text-[13px] text-white/60">
-            Workspaces sob demanda para gente que trabalha de qualquer lugar.
+            On-demand workspaces for people who work from anywhere.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-10 text-[13px] text-white/60 sm:grid-cols-3">
           <div className="space-y-2">
-            <p className="font-display font-semibold text-white">Produto</p>
-            <p>Espaços</p>
-            <p>Como funciona</p>
+            <p className="font-display font-semibold text-white">Product</p>
+            <p>Spaces</p>
+            <p>How it works</p>
           </div>
           <div className="space-y-2">
-            <p className="font-display font-semibold text-white">Empresa</p>
-            <p>Sobre</p>
+            <p className="font-display font-semibold text-white">Company</p>
+            <p>About</p>
             <p>Blog</p>
           </div>
           <div className="space-y-2">
             <p className="font-display font-semibold text-white">Legal</p>
-            <p>Privacidade</p>
-            <p>Termos</p>
+            <p>Privacy</p>
+            <p>Terms</p>
           </div>
         </div>
       </div>

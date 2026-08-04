@@ -35,14 +35,14 @@ export const GoogleSignInButton = () => {
     setError(null);
     try {
       const { isNewAccount } = await signInWithGoogle();
-      navigate(isNewAccount ? '/perfil/completar' : '/workspaces', {
+      navigate(isNewAccount ? '/profile/complete' : '/workspaces', {
         replace: true,
       });
     } catch (err) {
       const isPopupClosed =
         err instanceof FirebaseError && err.code === 'auth/popup-closed-by-user';
       if (!isPopupClosed) {
-        setError('Não foi possível entrar com o Google. Tente novamente.');
+        setError('Could not sign in with Google. Please try again.');
       }
     }
   };
@@ -61,7 +61,7 @@ export const GoogleSignInButton = () => {
         ) : (
           <GoogleIcon />
         )}
-        Continuar com Google
+        Continue with Google
       </Button>
       {error ? <p className="text-sm text-destructive">{error}</p> : null}
     </div>

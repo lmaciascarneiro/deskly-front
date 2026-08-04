@@ -15,40 +15,40 @@ import './landing02.css';
 const benefits = [
   {
     icon: Zap,
-    title: 'Reserva instantânea',
-    description: 'Confirmação em segundos, sem trocar mensagem com ninguém.',
+    title: 'Instant booking',
+    description: 'Confirmation in seconds, no messaging back and forth.',
     color: 'violet',
   },
   {
     icon: Wifi,
-    title: 'Internet turbo',
-    description: 'Fibra dedicada testada em toda unidade parceira.',
+    title: 'Turbo internet',
+    description: 'Dedicated fiber tested at every partner location.',
     color: 'pink',
   },
   {
     icon: Coffee,
-    title: 'Café incluso',
-    description: 'Porque ninguém programa, desenha ou vende direito sem cafeína.',
+    title: 'Coffee included',
+    description: 'Because nobody codes, designs, or sells well without caffeine.',
     color: 'orange',
   },
   {
     icon: Heart,
-    title: 'Curadoria de verdade',
-    description: 'Só entra no catálogo quem passa no nosso teste de vibe.',
+    title: 'Real curation',
+    description: 'Only spaces that pass our vibe check make it into the catalog.',
     color: 'violet',
   },
 ];
 
 const steps = [
-  { title: 'Explore', description: 'Navegue por espaços incríveis perto de você.', color: 'violet' },
-  { title: 'Reserve', description: 'Escolha o horário e confirme com um toque.', color: 'pink' },
-  { title: 'Produza', description: 'Chegue, faça login no wifi e mergulhe no trabalho.', color: 'orange' },
+  { title: 'Explore', description: 'Browse amazing spaces near you.', color: 'violet' },
+  { title: 'Book', description: 'Pick a time and confirm with one tap.', color: 'pink' },
+  { title: 'Produce', description: 'Arrive, log into the wifi, and dive into work.', color: 'orange' },
 ];
 
 const workspaces = [
-  { name: 'Loft Prisma', city: 'São Paulo', price: 'R$ 55/h', tag: 'Popular', color: 'violet' },
-  { name: 'Nômade Hub', city: 'Rio de Janeiro', price: 'R$ 42/h', tag: 'Novo', color: 'pink' },
-  { name: 'Vértice Coworking', city: 'Curitiba', price: 'R$ 38/h', tag: 'Top avaliado', color: 'orange' },
+  { name: 'Prism Loft', city: 'São Paulo', price: '$55/h', tag: 'Popular', color: 'violet' },
+  { name: 'Nomad Hub', city: 'Rio de Janeiro', price: '$42/h', tag: 'New', color: 'pink' },
+  { name: 'Vertex Coworking', city: 'Curitiba', price: '$38/h', tag: 'Top rated', color: 'orange' },
 ];
 
 const colorMap: Record<string, { text: string; bg: string; glow: string; ring: string }> = {
@@ -69,12 +69,12 @@ export function Landing02() {
             <span className="l02-display text-lg font-bold">Deskly</span>
           </div>
           <nav className="hidden items-center gap-7 text-sm font-medium text-white/90 md:flex">
-            <span className="cursor-default">Espaços</span>
-            <span className="cursor-default">Como funciona</span>
-            <span className="cursor-default">Anfitriões</span>
+            <span className="cursor-default">Spaces</span>
+            <span className="cursor-default">How it works</span>
+            <span className="cursor-default">Hosts</span>
           </nav>
           <button className="l02-glass rounded-full px-5 py-2 text-sm font-semibold text-white transition-transform hover:scale-105">
-            Começar agora
+            Get started now
           </button>
         </div>
       </header>
@@ -86,33 +86,33 @@ export function Landing02() {
 
         <div className="relative mx-auto max-w-4xl text-center">
           <span className="l02-rise l02-glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold text-white">
-            <Wand2 size={13} /> Reserve espaços incríveis em segundos
+            <Wand2 size={13} /> Book amazing spaces in seconds
           </span>
 
           <h1
             className="l02-rise l02-display mt-7 text-[44px] font-bold leading-[1.05] text-white sm:text-[76px]"
             style={{ animationDelay: '0.08s' }}
           >
-            Trabalhe onde a
+            Work where
             <br />
-            criatividade mora.
+            creativity lives.
           </h1>
 
           <p
             className="l02-rise mx-auto mt-6 max-w-xl text-[17px] font-medium leading-relaxed text-white/90"
             style={{ animationDelay: '0.16s' }}
           >
-            Coworkings, salas de reunião e cafés preparados pra produtividade — reservados em
-            minutos, com aquele friozinho na barriga de espaço novo.
+            Coworking spaces, meeting rooms, and cafes ready for productivity — booked in
+            minutes, with that new-space butterflies feeling.
           </p>
 
           <div className="l02-rise mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row" style={{ animationDelay: '0.24s' }}>
             <button className="flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-bold text-[#7C3AED] shadow-xl transition-transform hover:scale-105">
-              Encontrar meu espaço
+              Find my space
               <ArrowRight size={16} />
             </button>
             <button className="l02-glass rounded-full px-6 py-3 text-sm font-bold text-white transition-transform hover:scale-105">
-              Ver como funciona
+              See how it works
             </button>
           </div>
         </div>
@@ -140,10 +140,10 @@ export function Landing02() {
         <div className="mx-auto max-w-6xl">
           <div className="text-center">
             <span className="l02-display text-sm font-bold uppercase tracking-wide text-[#EC4899]">
-              Benefícios
+              Benefits
             </span>
             <h2 className="l02-display mx-auto mt-3 max-w-2xl text-3xl font-bold leading-tight sm:text-5xl">
-              Tudo pensado pra você render mais
+              Everything designed to help you get more done
             </h2>
           </div>
 
@@ -171,10 +171,10 @@ export function Landing02() {
         <div className="mx-auto max-w-5xl">
           <div className="text-center">
             <span className="l02-display text-sm font-bold uppercase tracking-wide text-[#F97316]">
-              Como funciona
+              How it works
             </span>
             <h2 className="l02-display mx-auto mt-3 max-w-xl text-3xl font-bold sm:text-5xl">
-              Três passos, zero fricção
+              Three steps, zero friction
             </h2>
           </div>
 
@@ -202,10 +202,10 @@ export function Landing02() {
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <span className="l02-display text-sm font-bold uppercase tracking-wide text-[#7C3AED]">
-                Catálogo
+                Catalog
               </span>
               <h2 className="l02-display mt-3 text-3xl font-bold sm:text-5xl">
-                Espaços que a galera ama
+                Spaces people love
               </h2>
             </div>
           </div>
@@ -255,13 +255,13 @@ export function Landing02() {
         <div className="l02-blob left-1/4 top-1/4 h-40 w-40 bg-white/30" />
         <div className="relative mx-auto max-w-2xl">
           <h2 className="l02-display text-3xl font-bold text-white sm:text-5xl">
-            Bora achar seu próximo espaço favorito?
+            Ready to find your next favorite space?
           </h2>
           <p className="mx-auto mt-4 max-w-md text-[15px] font-medium text-white/90">
-            Crie sua conta grátis e reserve seu primeiro workspace hoje mesmo.
+            Create your free account and book your first workspace today.
           </p>
           <button className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-7 py-3 text-sm font-bold text-[#7C3AED] shadow-xl transition-transform hover:scale-105">
-            Criar conta gratuita
+            Create free account
             <ArrowRight size={16} />
           </button>
         </div>
@@ -277,24 +277,24 @@ export function Landing02() {
               <span className="l02-display text-lg font-bold">Deskly</span>
             </div>
             <p className="mt-3 max-w-xs text-[13px] text-white/60">
-              O jeito mais vibrante de encontrar onde trabalhar hoje.
+              The most vibrant way to find where to work today.
             </p>
           </div>
           <div className="grid grid-cols-2 gap-10 text-[13px] text-white/60 sm:grid-cols-3">
             <div className="space-y-2">
-              <p className="font-semibold text-white">Produto</p>
-              <p>Como funciona</p>
-              <p>Anfitriões</p>
+              <p className="font-semibold text-white">Product</p>
+              <p>How it works</p>
+              <p>Hosts</p>
             </div>
             <div className="space-y-2">
-              <p className="font-semibold text-white">Empresa</p>
-              <p>Sobre</p>
+              <p className="font-semibold text-white">Company</p>
+              <p>About</p>
               <p>Blog</p>
             </div>
             <div className="space-y-2">
               <p className="font-semibold text-white">Legal</p>
-              <p>Privacidade</p>
-              <p>Termos</p>
+              <p>Privacy</p>
+              <p>Terms</p>
             </div>
           </div>
         </div>

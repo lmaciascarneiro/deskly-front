@@ -35,16 +35,16 @@ export const WorkspaceDetail = () => {
           className="inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-ink"
         >
           <ArrowLeft size={14} />
-          Voltar para espaços
+          Back to spaces
         </Link>
 
         {isLoading ? (
           <p className="mt-10 text-sm text-muted-foreground">
-            Carregando workspace…
+            Loading workspace…
           </p>
         ) : isError || !workspace ? (
           <p className="mt-10 text-sm text-destructive">
-            Não encontramos esse espaço. Ele pode ter sido removido.
+            We couldn't find this space. It may have been removed.
           </p>
         ) : (
           <div className="mt-8">
@@ -79,7 +79,7 @@ export const WorkspaceDetail = () => {
                   <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
                     <Star size={13} className="fill-lime text-lime" />
                     {workspace.rating.toFixed(1)} ({workspace.reviewCount}{' '}
-                    avaliações)
+                    reviews)
                   </p>
                 ) : null}
               </div>
@@ -88,7 +88,7 @@ export const WorkspaceDetail = () => {
                 <p className="font-display text-2xl font-bold text-indigo">
                   {currencyFormatter.format(workspace.pricePerHour)}
                 </p>
-                <p className="text-xs text-muted-foreground">por hora</p>
+                <p className="text-xs text-muted-foreground">per hour</p>
               </div>
             </div>
           </div>

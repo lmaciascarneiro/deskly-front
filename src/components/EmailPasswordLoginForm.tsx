@@ -7,14 +7,14 @@ import { Input } from '@/components/ui/input';
 import { useAuth } from '@/context/AuthContext';
 
 const FIREBASE_ERROR_MESSAGES: Record<string, string> = {
-  'auth/invalid-credential': 'E-mail ou senha inválidos.',
-  'auth/invalid-email': 'E-mail inválido.',
-  'auth/user-disabled': 'Esta conta foi desativada.',
-  'auth/user-not-found': 'E-mail ou senha inválidos.',
-  'auth/wrong-password': 'E-mail ou senha inválidos.',
-  'auth/missing-password': 'Informe sua senha.',
+  'auth/invalid-credential': 'Invalid email or password.',
+  'auth/invalid-email': 'Invalid email.',
+  'auth/user-disabled': 'This account has been disabled.',
+  'auth/user-not-found': 'Invalid email or password.',
+  'auth/wrong-password': 'Invalid email or password.',
+  'auth/missing-password': 'Please enter your password.',
   'auth/too-many-requests':
-    'Muitas tentativas sem sucesso. Tente novamente mais tarde.',
+    'Too many failed attempts. Please try again later.',
 };
 
 export const EmailPasswordLoginForm = () => {
@@ -29,15 +29,15 @@ export const EmailPasswordLoginForm = () => {
     setError(null);
     try {
       const { isNewAccount } = await signInWithEmail(email, password);
-      navigate(isNewAccount ? '/perfil/completar' : '/workspaces', {
+      navigate(isNewAccount ? '/profile/complete' : '/workspaces', {
         replace: true,
       });
     } catch (err) {
       const message =
         err instanceof FirebaseError
           ? (FIREBASE_ERROR_MESSAGES[err.code] ??
-            'Não foi possível entrar. Tente novamente.')
-          : 'Não foi possível entrar. Tente novamente.';
+            'Could not sign in. Please try again.')
+          : 'Could not sign in. Please try again.';
       setError(message);
     }
   };
@@ -46,7 +46,7 @@ export const EmailPasswordLoginForm = () => {
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-1.5">
         <label htmlFor="email" className="text-sm font-medium">
-          E-mail
+          Email
         </label>
         <Input
           id="email"
@@ -60,7 +60,7 @@ export const EmailPasswordLoginForm = () => {
 
       <div className="space-y-1.5">
         <label htmlFor="password" className="text-sm font-medium">
-          Senha
+          Password
         </label>
         <Input
           id="password"
@@ -76,7 +76,7 @@ export const EmailPasswordLoginForm = () => {
 
       <Button type="submit" className="w-full rounded-2xl" disabled={isLoading}>
         {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : null}
-        Entrar
+        Sign in
       </Button>
     </form>
   );

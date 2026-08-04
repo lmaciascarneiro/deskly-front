@@ -25,10 +25,10 @@ export const SignUp = () => {
         <Card className="w-full max-w-sm rounded-3xl border-none shadow-xl">
           <CardHeader>
             <CardTitle className="font-display text-3xl font-bold">
-              Criar conta
+              Create account
             </CardTitle>
             <CardDescription>
-              Leva menos de um minuto para começar.
+              It takes less than a minute to get started.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -37,7 +37,7 @@ export const SignUp = () => {
             <div className="flex items-center gap-3">
               <div className="h-px flex-1 bg-border" />
               <span className="font-display text-[11px] uppercase tracking-widest text-muted-foreground">
-                ou
+                or
               </span>
               <div className="h-px flex-1 bg-border" />
             </div>
@@ -45,9 +45,9 @@ export const SignUp = () => {
             <GoogleSignInButton />
 
             <p className="text-center text-sm text-muted-foreground">
-              Já tem conta?{' '}
+              Already have an account?{' '}
               <Link to="/login" className="font-medium text-indigo underline">
-                Entrar
+                Sign in
               </Link>
             </p>
           </CardContent>
