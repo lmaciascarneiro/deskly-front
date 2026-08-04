@@ -15,12 +15,8 @@ export const userService = {
   async updateUser(
     userId: string,
     payload: UpdateUserPayload
-  ): Promise<AuthUser> {
+  ): Promise<void> {
     const body: UpdateUserRequestDto = mapUpdateUserPayload(payload);
-    const response = await api.put<UserResponseDto>(
-      `/api/v1/users/${userId}`,
-      body
-    );
-    return mapUserResponse(response.data);
+    await api.put(`/api/v1/users/${userId}`, body);
   },
 };

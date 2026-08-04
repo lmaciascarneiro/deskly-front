@@ -29,7 +29,7 @@ const COPY = {
 };
 
 export const EditProfile = ({ mode }: { mode: 'onboarding' | 'settings' }) => {
-  const { user, setUser } = useAuth();
+  const { user, refreshUser } = useAuth();
   const navigate = useNavigate();
   const [name, setName] = useState(user?.name ?? '');
   const [phoneNumber, setPhoneNumber] = useState(user?.phoneNumber ?? '');
@@ -48,12 +48,12 @@ export const EditProfile = ({ mode }: { mode: 'onboarding' | 'settings' }) => {
     setSaved(false);
     setIsSaving(true);
     try {
-      const updatedUser = await userService.updateUser(user.id, {
+      await userService.updateUser(user.id, {
         name,
         phoneNumber,
         isHost,
       });
-      setUser(updatedUser);
+      await refreshUser();
 
       if (mode === 'onboarding') {
         navigate('/workspaces', { replace: true });
