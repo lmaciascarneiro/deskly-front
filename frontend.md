@@ -80,7 +80,8 @@ src/
     user.service.ts                # GET /api/v1/users/me, PUT /api/v1/users/{id}
     workspace.service.ts           # public: list/getById/listPhotos
     host-workspace.service.ts      # host: list/getById/create/update/remove
-    host-workspace-photo.service.ts # host: create/update/remove photos
+    host-workspace-photo.service.ts # host: create/update/remove photo records (object_key + display_order)
+    s3-upload.service.ts           # requests a presigned S3 upload URL and PUTs the file bytes directly to S3
   types/
     auth.ts / user.ts
     pagination.ts                  # PageResponseDto<T> + generic mapPage
@@ -163,7 +164,7 @@ Discrepancies already fixed in the code based on the Swagger:
 
 - Workspace editing can't pre-fill description/address/neighborhood (the API doesn't return these fields on read) — the form warns about this and only sends what the host re-types.
 - Bookings, payments, reviews, and favorites don't have UI yet (out of scope so far).
-- Photo upload is URL-only (`photo_url`) — there's no file upload endpoint documented in the Swagger.
+- Photo upload flow: the front never sends the file to the backend. `s3-upload.service.ts` calls `POST /api/v1/host/workspaces/{workspaceId}/photos/upload-url` (body: `{ content_type }`) to get `{ upload_url, object_key, expires_in, max_file_size_bytes }`, checks `file.size` against `max_file_size_bytes` client-side (fails fast with a friendly message instead of attempting an oversized PUT), then does a raw `PUT` of the file bytes to `upload_url` (no `multipart/form-data`, `Content-Type` set to the file's type) using a plain Axios instance — deliberately **not** the shared `api` instance, so the app's Bearer token is never sent to S3. Once the PUT succeeds, `host-workspace-photo.service.ts` calls `POST .../photos` with `{ object_key, display_order }` to persist the record (still returns a raw UUID string). Confirmed against real backend responses on 2026-08-04.
 - The main bundle (`index-*.js`) has already passed 500kB — consider `manualChunks` or lazy-loading less-visited routes (e.g. host screens) if this becomes a real performance issue.
 
 ## 9. English first

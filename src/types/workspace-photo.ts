@@ -32,22 +32,49 @@ export const mapPhotoPage = (
 ): PhotoPage => mapPage(dto, mapPhoto, requestedPage);
 
 export interface CreatePhotoPayload {
-  photoUrl: string;
+  objectKey: string;
   displayOrder?: number;
 }
 
 export interface CreatePhotoRequestDto {
-  photo_url: string;
+  object_key: string;
   display_order?: number;
 }
 
 export const mapCreatePhotoPayload = (
   payload: CreatePhotoPayload
 ): CreatePhotoRequestDto => ({
-  photo_url: payload.photoUrl,
+  object_key: payload.objectKey,
   ...(payload.displayOrder !== undefined
     ? { display_order: payload.displayOrder }
     : {}),
+});
+
+export interface UploadUrlRequestDto {
+  content_type: string;
+}
+
+export interface UploadUrlResponseDto {
+  upload_url: string;
+  object_key: string;
+  expires_in: number;
+  max_file_size_bytes: number;
+}
+
+export interface UploadUrlResult {
+  uploadUrl: string;
+  objectKey: string;
+  expiresIn: number;
+  maxFileSizeBytes: number;
+}
+
+export const mapUploadUrlResult = (
+  dto: UploadUrlResponseDto
+): UploadUrlResult => ({
+  uploadUrl: dto.upload_url,
+  objectKey: dto.object_key,
+  expiresIn: dto.expires_in,
+  maxFileSizeBytes: dto.max_file_size_bytes,
 });
 
 export interface UpdatePhotoPayload {

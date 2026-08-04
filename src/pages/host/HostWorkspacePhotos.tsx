@@ -1,22 +1,24 @@
-import { FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { ArrowLeft, Loader2, Plus, Trash2 } from 'lucide-react';
+import { ArrowLeft, ImagePlus, Loader2, Trash2 } from 'lucide-react';
 import { AppHeader } from '@/components/AppHeader';
 import { AppFooter } from '@/components/AppFooter';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { workspaceService } from '@/services/workspace.service';
 import { hostWorkspacePhotoService } from '@/services/host-workspace-photo.service';
+import { s3UploadService } from '@/services/s3-upload.service';
 
 export const HostWorkspacePhotos = () => {
   const { id } = useParams<{ id: string }>();
   const workspaceId = id as string;
   const queryClient = useQueryClient();
 
-  const [photoUrl, setPhotoUrl] = useState('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [displayOrder, setDisplayOrder] = useState('');
-  const [createError, setCreateError] = useState<string | null>(null);
+  const [uploadProgress, setUploadProgress] = useState(0);
   const [orderDrafts, setOrderDrafts] = useState<Record<string, string>>({});
 
   const photosQueryKey = ['workspaces', 'detail', workspaceId, 'photos'];
@@ -30,19 +32,35 @@ export const HostWorkspacePhotos = () => {
   const invalidatePhotos = () =>
     queryClient.invalidateQueries({ queryKey: photosQueryKey });
 
-  const createMutation = useMutation({
-    mutationFn: () =>
-      hostWorkspacePhotoService.create(workspaceId, {
-        photoUrl,
+  const uploadMutation = useMutation({
+    mutationFn: async () => {
+      if (!selectedFile) throw new Error('No file selected');
+      setUploadProgress(0);
+      const objectKey = await s3UploadService.uploadPhoto(
+        workspaceId,
+        selectedFile,
+        { onProgress: setUploadProgress }
+      );
+      await hostWorkspacePhotoService.create(workspaceId, {
+        objectKey,
         displayOrder: displayOrder ? Number(displayOrder) : undefined,
-      }),
+      });
+    },
     onSuccess: () => {
-      setPhotoUrl('');
+      setSelectedFile(null);
       setDisplayOrder('');
+      setUploadProgress(0);
+      if (fileInputRef.current) fileInputRef.current.value = '';
       invalidatePhotos();
     },
-    onError: () => setCreateError('Could not add the photo. Check the URL and try again.'),
   });
+
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setSelectedFile(event.target.files?.[0] ?? null);
+    uploadMutation.reset();
+  };
+
+  const isSavingPhoto = uploadMutation.isPending && uploadProgress >= 100;
 
   const updateOrderMutation = useMutation({
     mutationFn: ({ photoId, order }: { photoId: string; order: number }) =>
@@ -58,10 +76,10 @@ export const HostWorkspacePhotos = () => {
     onSuccess: () => invalidatePhotos(),
   });
 
-  const handleCreate = (event: FormEvent<HTMLFormElement>) => {
+  const handleUpload = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setCreateError(null);
-    createMutation.mutate();
+    if (!selectedFile) return;
+    uploadMutation.mutate();
   };
 
   return (
@@ -79,24 +97,24 @@ export const HostWorkspacePhotos = () => {
 
         <h1 className="font-display mt-4 text-3xl font-bold">Workspace photos</h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Photos are referenced by URL — host the image on some service and paste the link here.
+          Upload an image straight from your device — it's sent directly to storage.
         </p>
 
         <form
-          onSubmit={handleCreate}
+          onSubmit={handleUpload}
           className="mt-8 flex flex-col gap-3 rounded-3xl border border-border p-5 sm:flex-row sm:items-end"
         >
           <div className="flex-1 space-y-1.5">
-            <label htmlFor="photo-url" className="text-sm font-medium">
-              Photo URL
+            <label htmlFor="photo-file" className="text-sm font-medium">
+              Photo
             </label>
             <Input
-              id="photo-url"
-              type="url"
-              required
-              value={photoUrl}
-              onChange={(e) => setPhotoUrl(e.target.value)}
-              placeholder="https://example.com/photo.jpg"
+              id="photo-file"
+              type="file"
+              accept="image/*"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+              disabled={uploadMutation.isPending}
             />
           </div>
           <div className="w-full space-y-1.5 sm:w-28">
@@ -110,23 +128,57 @@ export const HostWorkspacePhotos = () => {
               value={displayOrder}
               onChange={(e) => setDisplayOrder(e.target.value)}
               placeholder="1"
+              disabled={uploadMutation.isPending}
             />
           </div>
           <Button
             type="submit"
             className="rounded-2xl"
-            disabled={createMutation.isPending}
+            disabled={!selectedFile || uploadMutation.isPending}
           >
-            {createMutation.isPending ? (
+            {uploadMutation.isPending ? (
               <Loader2 className="h-4 w-4 animate-spin" />
             ) : (
-              <Plus size={16} />
+              <ImagePlus size={16} />
             )}
-            Add
+            Upload
           </Button>
         </form>
-        {createError ? (
-          <p className="mt-2 text-sm text-destructive">{createError}</p>
+
+        {uploadMutation.isPending ? (
+          <div className="mt-3 space-y-1.5">
+            <div className="h-2 w-full overflow-hidden rounded-full bg-lavender">
+              <div
+                className="h-2 rounded-full bg-indigo transition-all"
+                style={{ width: `${isSavingPhoto ? 100 : uploadProgress}%` }}
+              />
+            </div>
+            <p className="text-xs text-muted-foreground">
+              {isSavingPhoto
+                ? 'Saving photo…'
+                : `Uploading… ${uploadProgress}%`}
+            </p>
+          </div>
+        ) : null}
+
+        {uploadMutation.isError ? (
+          <div className="mt-2 flex items-center gap-3">
+            <p className="text-sm text-destructive">
+              {uploadMutation.error instanceof Error &&
+              uploadMutation.error.message
+                ? uploadMutation.error.message
+                : 'Could not upload the photo. Please try again.'}
+            </p>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="rounded-xl"
+              onClick={() => uploadMutation.mutate()}
+            >
+              Retry
+            </Button>
+          </div>
         ) : null}
 
         <div className="mt-10 space-y-4">
