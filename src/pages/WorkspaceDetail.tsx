@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft, MapPin, Star } from 'lucide-react';
 import { AppHeader } from '@/components/AppHeader';
 import { AppFooter } from '@/components/AppFooter';
+import { FavoriteButton } from '@/components/FavoriteButton';
 import { workspaceService } from '@/services/workspace.service';
 
 const currencyFormatter = new Intl.NumberFormat('pt-BR', {
@@ -69,9 +70,12 @@ export const WorkspaceDetail = () => {
 
             <div className="mt-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
               <div>
-                <h1 className="font-display text-3xl font-bold sm:text-4xl">
-                  {workspace.title}
-                </h1>
+                <div className="flex items-center gap-3">
+                  <h1 className="font-display text-3xl font-bold sm:text-4xl">
+                    {workspace.title}
+                  </h1>
+                  <FavoriteButton workspaceId={workspace.id} />
+                </div>
                 <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
                   <MapPin size={14} /> {workspace.city}
                 </p>

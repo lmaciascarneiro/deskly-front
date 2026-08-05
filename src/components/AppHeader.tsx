@@ -33,6 +33,11 @@ export const AppHeader = () => {
           <Link to="/workspaces" className="rounded-full px-4 py-1.5 transition-colors hover:bg-white">
             Spaces
           </Link>
+          {isAuthenticated ? (
+            <Link to="/favorites" className="rounded-full px-4 py-1.5 transition-colors hover:bg-white">
+              Favorites
+            </Link>
+          ) : null}
         </nav>
 
         {isAuthenticated && user?.isHost ? (

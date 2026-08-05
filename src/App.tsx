@@ -6,6 +6,7 @@ import { SignUp } from '@/pages/SignUp';
 import { EditProfile } from '@/pages/EditProfile';
 import { WorkspacesList } from '@/pages/WorkspacesList';
 import { WorkspaceDetail } from '@/pages/WorkspaceDetail';
+import { Favorites } from '@/pages/Favorites';
 import { HostWorkspacesList } from '@/pages/host/HostWorkspacesList';
 import { HostWorkspaceForm } from '@/pages/host/HostWorkspaceForm';
 import { HostWorkspacePhotos } from '@/pages/host/HostWorkspacePhotos';
@@ -66,6 +67,14 @@ function App() {
         />
         <Route path="/workspaces" element={<WorkspacesList />} />
         <Route path="/workspaces/:id" element={<WorkspaceDetail />} />
+        <Route
+          path="/favorites"
+          element={
+            <ProtectedRoute>
+              <Favorites />
+            </ProtectedRoute>
+          }
+        />
 
         <Route
           path="/host/workspaces"
