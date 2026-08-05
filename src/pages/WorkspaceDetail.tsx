@@ -95,6 +95,27 @@ export const WorkspaceDetail = () => {
                 <p className="text-xs text-muted-foreground">per hour</p>
               </div>
             </div>
+
+            {workspace.amenities.length > 0 ? (
+              <div className="mt-10">
+                <h2 className="font-display text-xl font-bold">Amenities</h2>
+                <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {workspace.amenities.map((amenity) => (
+                    <div
+                      key={amenity.id}
+                      className="rounded-2xl border border-border p-4"
+                    >
+                      <p className="text-sm font-medium">{amenity.name}</p>
+                      {amenity.description ? (
+                        <p className="mt-0.5 text-xs text-muted-foreground">
+                          {amenity.description}
+                        </p>
+                      ) : null}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </div>
         )}
       </main>

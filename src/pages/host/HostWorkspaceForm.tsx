@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Loader2 } from 'lucide-react';
 import { AppHeader } from '@/components/AppHeader';
 import { AppFooter } from '@/components/AppFooter';
+import { AmenitiesCheckboxGroup } from '@/components/AmenitiesCheckboxGroup';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -32,6 +33,7 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
   const [neighborhood, setNeighborhood] = useState('');
   const [description, setDescription] = useState('');
   const [pricePerHour, setPricePerHour] = useState('');
+  const [amenityIds, setAmenityIds] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -40,6 +42,7 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
       setTitle(existing.title);
       setCity(existing.city);
       setPricePerHour(String(existing.pricePerHour));
+      setAmenityIds(existing.amenities.map((amenity) => amenity.id));
     }
   }, [existing]);
 
@@ -63,6 +66,7 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
           pricePerHour: price,
           description: description || undefined,
           neighborhood: neighborhood || undefined,
+          amenityIds,
         });
         navigate(`/host/workspaces/${newId}/photos`, { replace: true });
       } else if (id) {
@@ -73,6 +77,7 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
           ...(description ? { description } : {}),
           ...(neighborhood ? { neighborhood } : {}),
           pricePerHour: price,
+          amenityIds,
         });
         navigate('/host/workspaces', { replace: true });
       }
@@ -192,6 +197,14 @@ export const HostWorkspaceForm = ({ mode }: { mode: 'create' | 'edit' }) => {
                   value={pricePerHour}
                   onChange={(e) => setPricePerHour(e.target.value)}
                   placeholder="39.90"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium">Amenities</label>
+                <AmenitiesCheckboxGroup
+                  selectedIds={amenityIds}
+                  onChange={setAmenityIds}
                 />
               </div>
 

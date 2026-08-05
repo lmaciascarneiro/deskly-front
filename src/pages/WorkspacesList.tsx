@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ChevronLeft, ChevronRight, Search } from 'lucide-react';
 import { AppHeader } from '@/components/AppHeader';
 import { AppFooter } from '@/components/AppFooter';
+import { AmenityFilterChips } from '@/components/AmenityFilterChips';
 import { WorkspaceCard } from '@/components/WorkspaceCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,18 +14,29 @@ const PAGE_SIZE = 12;
 export const WorkspacesList = () => {
   const [query, setQuery] = useState('');
   const [submittedQuery, setSubmittedQuery] = useState('');
+  const [amenityIds, setAmenityIds] = useState<string[]>([]);
   const [page, setPage] = useState(0);
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['workspaces', 'list', submittedQuery, page],
+    queryKey: ['workspaces', 'list', submittedQuery, amenityIds, page],
     queryFn: () =>
-      workspaceService.list({ query: submittedQuery, page, size: PAGE_SIZE }),
+      workspaceService.list({
+        query: submittedQuery,
+        amenityIds,
+        page,
+        size: PAGE_SIZE,
+      }),
   });
 
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setPage(0);
     setSubmittedQuery(query);
+  };
+
+  const handleAmenityFilterChange = (ids: string[]) => {
+    setPage(0);
+    setAmenityIds(ids);
   };
 
   // The backend sometimes returns total_pages=0 even when there are items on the current page.
@@ -56,6 +68,13 @@ export const WorkspacesList = () => {
             <Search size={16} />
           </Button>
         </form>
+
+        <div className="mt-6">
+          <AmenityFilterChips
+            selectedIds={amenityIds}
+            onChange={handleAmenityFilterChange}
+          />
+        </div>
 
         <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {isLoading ? (

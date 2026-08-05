@@ -1,7 +1,10 @@
 import { Page, PageResponseDto, mapPage } from '@/types/pagination';
+import { Amenity, AmenityDto, mapAmenity } from '@/types/amenity';
 
 // Shape confirmed via GET /v3/api-docs (WorkspaceResponse schema) — the response
 // doesn't include description/address/neighborhood/lat/long, only the create request.
+// "amenities" is only populated on the single-workspace detail endpoints
+// (GET .../workspaces/{id}); list endpoints always return it as [].
 export interface WorkspaceDto {
   id: string;
   host_id: string;
@@ -13,6 +16,7 @@ export interface WorkspaceDto {
   status: string;
   created_at: string;
   cover_photo_url?: string | null;
+  amenities?: AmenityDto[];
 }
 
 export interface Workspace {
@@ -26,6 +30,7 @@ export interface Workspace {
   status: string;
   createdAt: string;
   coverPhotoUrl: string | null;
+  amenities: Amenity[];
 }
 
 export const mapWorkspace = (dto: WorkspaceDto): Workspace => ({
@@ -39,6 +44,7 @@ export const mapWorkspace = (dto: WorkspaceDto): Workspace => ({
   status: dto.status,
   createdAt: dto.created_at,
   coverPhotoUrl: dto.cover_photo_url ?? null,
+  amenities: (dto.amenities ?? []).map(mapAmenity),
 });
 
 export type WorkspacePage = Page<Workspace>;
@@ -50,6 +56,7 @@ export const mapWorkspacePage = (
 
 export interface WorkspaceListParams {
   query?: string;
+  amenityIds?: string[];
   page?: number;
   size?: number;
 }
@@ -61,6 +68,7 @@ export interface CreateWorkspacePayload {
   pricePerHour: number;
   description?: string;
   neighborhood?: string;
+  amenityIds?: string[];
 }
 
 export interface CreateWorkspaceRequestDto {
@@ -70,6 +78,7 @@ export interface CreateWorkspaceRequestDto {
   price_per_hour: number;
   description?: string;
   neighborhood?: string;
+  amenity_ids?: string[];
 }
 
 export const mapCreateWorkspacePayload = (
@@ -81,6 +90,9 @@ export const mapCreateWorkspacePayload = (
   price_per_hour: payload.pricePerHour,
   ...(payload.description ? { description: payload.description } : {}),
   ...(payload.neighborhood ? { neighborhood: payload.neighborhood } : {}),
+  ...(payload.amenityIds !== undefined
+    ? { amenity_ids: payload.amenityIds }
+    : {}),
 });
 
 export interface UpdateWorkspacePayload {
@@ -90,6 +102,9 @@ export interface UpdateWorkspacePayload {
   city?: string;
   neighborhood?: string;
   pricePerHour?: number;
+  // Omitted/undefined = amenities are left unchanged; providing an array
+  // (even []) fully replaces the workspace's current amenity set.
+  amenityIds?: string[];
 }
 
 export interface UpdateWorkspaceRequestDto {
@@ -99,6 +114,7 @@ export interface UpdateWorkspaceRequestDto {
   city?: string;
   neighborhood?: string;
   price_per_hour?: number;
+  amenity_ids?: string[];
 }
 
 export const mapUpdateWorkspacePayload = (
@@ -115,5 +131,8 @@ export const mapUpdateWorkspacePayload = (
     : {}),
   ...(payload.pricePerHour !== undefined
     ? { price_per_hour: payload.pricePerHour }
+    : {}),
+  ...(payload.amenityIds !== undefined
+    ? { amenity_ids: payload.amenityIds }
     : {}),
 });

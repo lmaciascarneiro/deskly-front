@@ -21,7 +21,16 @@ export const hostWorkspaceService = {
     const size = params.size ?? 20;
     const response = await api.get<PageResponseDto<WorkspaceDto>>(
       '/api/v1/host/workspaces',
-      { params: { query: params.query ?? '', page, size } }
+      {
+        params: {
+          query: params.query ?? '',
+          page,
+          size,
+          ...(params.amenityIds && params.amenityIds.length > 0
+            ? { amenity_ids: params.amenityIds.join(',') }
+            : {}),
+        },
+      }
     );
     return mapWorkspacePage(response.data, page);
   },
