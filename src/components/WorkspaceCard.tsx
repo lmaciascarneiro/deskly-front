@@ -13,11 +13,21 @@ export const WorkspaceCard = ({ workspace }: { workspace: Workspace }) => {
       to={`/workspaces/${workspace.id}`}
       className="group block overflow-hidden rounded-3xl bg-white shadow-sm ring-1 ring-black/5 transition-transform duration-300 hover:-translate-y-1.5"
     >
-      <div className="blob-shape relative m-4 flex h-36 items-center justify-center bg-gradient-to-br from-indigo/15 to-lime/25">
-        <span className="font-display text-3xl font-bold text-indigo/40">
-          {workspace.title.charAt(0).toUpperCase()}
-        </span>
-      </div>
+      {workspace.coverPhotoUrl ? (
+        <div className="blob-shape relative m-4 h-36 overflow-hidden">
+          <img
+            src={workspace.coverPhotoUrl}
+            alt={workspace.title}
+            className="h-full w-full object-cover"
+          />
+        </div>
+      ) : (
+        <div className="blob-shape relative m-4 flex h-36 items-center justify-center bg-gradient-to-br from-indigo/15 to-lime/25">
+          <span className="font-display text-3xl font-bold text-indigo/40">
+            {workspace.title.charAt(0).toUpperCase()}
+          </span>
+        </div>
+      )}
       <div className="px-5 pb-5">
         <div className="flex items-start justify-between gap-2">
           <p className="font-display truncate text-[15px] font-bold">

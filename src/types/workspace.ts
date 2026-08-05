@@ -12,6 +12,7 @@ export interface WorkspaceDto {
   review_count: number;
   status: string;
   created_at: string;
+  cover_photo_url?: string | null;
 }
 
 export interface Workspace {
@@ -24,6 +25,7 @@ export interface Workspace {
   reviewCount: number;
   status: string;
   createdAt: string;
+  coverPhotoUrl: string | null;
 }
 
 export const mapWorkspace = (dto: WorkspaceDto): Workspace => ({
@@ -36,6 +38,7 @@ export const mapWorkspace = (dto: WorkspaceDto): Workspace => ({
   reviewCount: dto.review_count,
   status: dto.status,
   createdAt: dto.created_at,
+  coverPhotoUrl: dto.cover_photo_url ?? null,
 });
 
 export type WorkspacePage = Page<Workspace>;
