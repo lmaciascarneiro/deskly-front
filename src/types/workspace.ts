@@ -57,6 +57,7 @@ export const mapWorkspacePage = (
 export interface WorkspaceListParams {
   query?: string;
   amenityIds?: string[];
+  text?: string;
   page?: number;
   size?: number;
 }

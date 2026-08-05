@@ -28,6 +28,7 @@ export const workspaceService = {
           ...(params.amenityIds && params.amenityIds.length > 0
             ? { amenity_ids: params.amenityIds.join(',') }
             : {}),
+          ...(params.text ? { text: params.text } : {}),
         },
       }
     );

@@ -7,22 +7,34 @@ import { AmenityFilterChips } from '@/components/AmenityFilterChips';
 import { WorkspaceCard } from '@/components/WorkspaceCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useAuth } from '@/context/AuthContext';
 import { workspaceService } from '@/services/workspace.service';
 
 const PAGE_SIZE = 12;
 
 export const WorkspacesList = () => {
+  const { isAuthenticated } = useAuth();
   const [query, setQuery] = useState('');
   const [submittedQuery, setSubmittedQuery] = useState('');
+  const [aiText, setAiText] = useState('');
+  const [submittedAiText, setSubmittedAiText] = useState('');
   const [amenityIds, setAmenityIds] = useState<string[]>([]);
   const [page, setPage] = useState(0);
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['workspaces', 'list', submittedQuery, amenityIds, page],
+    queryKey: [
+      'workspaces',
+      'list',
+      submittedQuery,
+      amenityIds,
+      submittedAiText,
+      page,
+    ],
     queryFn: () =>
       workspaceService.list({
         query: submittedQuery,
         amenityIds,
+        text: submittedAiText,
         page,
         size: PAGE_SIZE,
       }),
@@ -32,6 +44,12 @@ export const WorkspacesList = () => {
     event.preventDefault();
     setPage(0);
     setSubmittedQuery(query);
+  };
+
+  const handleAiSearch = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setPage(0);
+    setSubmittedAiText(aiText);
   };
 
   const handleAmenityFilterChange = (ids: string[]) => {
@@ -54,20 +72,40 @@ export const WorkspacesList = () => {
           Find your next workspace
         </h1>
 
-        <form
-          onSubmit={handleSearch}
-          className="mt-8 flex max-w-md items-center gap-2"
-        >
-          <Input
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Search by city, neighborhood, or name..."
-            className="rounded-2xl"
-          />
-          <Button type="submit" size="icon" className="shrink-0 rounded-2xl">
-            <Search size={16} />
-          </Button>
-        </form>
+        <div className="mt-8 flex max-w-md flex-col gap-4">
+          {isAuthenticated ? (
+            <form
+              onSubmit={handleAiSearch}
+              className="flex items-center gap-2"
+            >
+              <Input
+                value={aiText}
+                onChange={(event) => setAiText(event.target.value)}
+                placeholder="Descreva o workspace que você procura..."
+                className="rounded-2xl"
+              />
+              <Button
+                type="submit"
+                size="icon"
+                className="shrink-0 rounded-2xl"
+              >
+                <Search size={16} />
+              </Button>
+            </form>
+          ) : null}
+
+          <form onSubmit={handleSearch} className="flex items-center gap-2">
+            <Input
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search by city, neighborhood, or name..."
+              className="rounded-2xl"
+            />
+            <Button type="submit" size="icon" className="shrink-0 rounded-2xl">
+              <Search size={16} />
+            </Button>
+          </form>
+        </div>
 
         <div className="mt-6">
           <AmenityFilterChips
