@@ -41,7 +41,7 @@ export const Favorites = () => {
             </p>
           ) : favorites.length === 0 ? (
             <p className="text-sm text-muted-foreground">
-              Você ainda não possui favoritos.
+              You don't have yet favorites.
             </p>
           ) : (
             favorites.map((favorite, index) => {

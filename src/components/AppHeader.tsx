@@ -1,23 +1,13 @@
-import { Link, useNavigate } from 'react-router-dom';
-import { Compass, LogOut, UserRound, Building2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { LogOut, UserRound } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { GuestNav } from '@/components/GuestNav';
+import { HostNav } from '@/components/HostNav';
+import { RoleSwitch } from '@/components/RoleSwitch';
 import { useAuth } from '@/context/AuthContext';
-import { cn } from '@/lib/utils';
 
 export const AppHeader = () => {
-  const { user, isAuthenticated, activeRole, setActiveRole, signOut } =
-    useAuth();
-  const navigate = useNavigate();
-
-  const goExplore = () => {
-    setActiveRole('guest');
-    navigate('/workspaces');
-  };
-
-  const goHost = () => {
-    setActiveRole('host');
-    navigate('/host/workspaces');
-  };
+  const { user, isAuthenticated, activeRole, signOut } = useAuth();
 
   return (
     <header className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-6">
@@ -28,58 +18,17 @@ export const AppHeader = () => {
         <span className="font-display text-lg font-bold">Deskly</span>
       </Link>
 
-      <div className="flex items-center gap-3">
-        <nav className="hidden items-center gap-2 rounded-full bg-secondary p-1 text-sm font-medium md:flex">
-          <Link to="/workspaces" className="rounded-full px-4 py-1.5 transition-colors hover:bg-white">
-            Spaces
-          </Link>
-          {isAuthenticated ? (
-            <Link to="/favorites" className="rounded-full px-4 py-1.5 transition-colors hover:bg-white">
-              Favorites
-            </Link>
-          ) : null}
-        </nav>
-
-        {isAuthenticated && user?.isHost ? (
-          <div className="flex items-center gap-1 rounded-full border border-border bg-white p-1 text-xs font-semibold">
-            <button
-              type="button"
-              onClick={goExplore}
-              className={cn(
-                'flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors',
-                activeRole === 'guest'
-                  ? 'bg-indigo text-white'
-                  : 'text-muted-foreground hover:text-ink'
-              )}
-            >
-              <Compass size={13} />
-              Explore
-            </button>
-            <button
-              type="button"
-              onClick={goHost}
-              className={cn(
-                'flex items-center gap-1.5 rounded-full px-3 py-1.5 transition-colors',
-                activeRole === 'host'
-                  ? 'bg-indigo text-white'
-                  : 'text-muted-foreground hover:text-ink'
-              )}
-            >
-              <Building2 size={13} />
-              Host
-            </button>
-          </div>
-        ) : null}
-      </div>
+      {activeRole === 'host' ? <HostNav /> : <GuestNav isAuthenticated={isAuthenticated} />}
 
       {isAuthenticated && user ? (
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col items-end gap-2">
           <Button variant="ghost" size="sm" asChild>
             <Link to="/profile/edit" className="flex items-center gap-1.5">
               <UserRound className="h-3.5 w-3.5" />
               <span className="max-w-[8rem] truncate">{user.name ?? user.email}</span>
             </Link>
           </Button>
+          {user.isHost ? <RoleSwitch /> : null}
           <Button variant="outline" size="sm" onClick={() => signOut()}>
             <LogOut className="h-3.5 w-3.5" />
             Sign out

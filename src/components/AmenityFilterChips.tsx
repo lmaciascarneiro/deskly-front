@@ -29,31 +29,26 @@ export const AmenityFilterChips = ({
   }
 
   return (
-    <div>
-      <p className="text-sm font-medium text-muted-foreground">
-        Filter by amenities
-      </p>
-      <div className="mt-2 flex flex-wrap gap-2">
-        {data.items.map((amenity) => {
-          const isSelected = selectedIds.includes(amenity.id);
-          return (
-            <button
-              key={amenity.id}
-              type="button"
-              onClick={() => toggle(amenity.id)}
-              aria-pressed={isSelected}
-              className={cn(
-                'rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors',
-                isSelected
-                  ? 'border-indigo bg-indigo text-white'
-                  : 'border-border bg-white text-muted-foreground hover:border-indigo/40 hover:text-ink'
-              )}
-            >
-              {amenity.name}
-            </button>
-          );
-        })}
-      </div>
+    <div className="grid grid-cols-2 gap-2.5">
+      {data.items.map((amenity) => {
+        const isSelected = selectedIds.includes(amenity.id);
+        return (
+          <button
+            key={amenity.id}
+            type="button"
+            onClick={() => toggle(amenity.id)}
+            aria-pressed={isSelected}
+            className={cn(
+              'rounded-full border px-3 py-1.5 text-xs font-medium transition-colors',
+              isSelected
+                ? 'border-indigo bg-indigo text-white'
+                : 'border-border bg-white text-muted-foreground hover:border-indigo/40 hover:text-ink'
+            )}
+          >
+            {amenity.name}
+          </button>
+        );
+      })}
     </div>
   );
 };
